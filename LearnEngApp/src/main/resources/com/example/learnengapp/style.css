@@ -1,0 +1,5 @@
+/* style.css */
+.bordered-image {
+    -fx-border-color: black; /* Màu sắc của viền */
+    -fx-border-width: 2px; /* Độ dày của viền */
+}
