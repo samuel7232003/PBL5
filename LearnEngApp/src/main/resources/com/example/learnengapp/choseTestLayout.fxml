@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.ChoseTestLayoutController">
+   <children>
+       <Pane layoutX="22.0" layoutY="43.0" prefHeight="50.0" prefWidth="50.0" style="-fx-border-radius: 50; -fx-border-color: FFC312;">
+           <children>
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/Menu@3x.png" />
+                   </image></ImageView>
+           </children>
+       </Pane>
+       <Pane layoutX="22.0" layoutY="43.0" prefHeight="263.0" prefWidth="50.0" style="-fx-border-color: FFC312; -fx-border-radius: 50;">
+           <children>
+               <ImageView fx:id="cameraImageView" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/Camera_light.png" />
+                   </image>
+               </ImageView>
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/notebook_light.png" />
+                   </image>
+               </ImageView>
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/Test.png" />
+                   </image></ImageView>
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/User_cicrle_light.png" />
+                   </image>
+               </ImageView>
+           </children></Pane>
+       
+      <Pane layoutX="130.0" layoutY="29.0" prefHeight="443.0" prefWidth="513.0" style="-fx-border-color: FFC312; -fx-border-width: 1; -fx-border-radius: 8;">
+         <children>
+            <Label layoutX="87.0" layoutY="34.0" prefHeight="53.0" prefWidth="339.0" style="-fx-font-weight: bold;" text="VOCABULARY TEST" textFill="#ffc312">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+            <Line endX="122.79998779296875" layoutX="249.0" layoutY="98.0" startX="-108.20001220703125" stroke="#e1a500" strokeWidth="2.0" />
+            <Label layoutX="120.0" layoutY="153.0" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: FFC312; -fx-label-padding: 0 0 0 60;" text="10 Words" textFill="#f25c00">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+             <Label layoutX="120.0" layoutY="240.0" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: ffc312; -fx-label-padding: 0 0 0 60;" text="20 Words" textFill="#f25c00">
+                 <font>
+                     <Font size="36.0" />
+                 </font>
+             </Label>
+             <Label layoutX="120.0" layoutY="330.0" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: ffc312; -fx-label-padding: 0 0 0 60;" text="30 Words" textFill="#f25c00">
+                 <font>
+                     <Font size="36.0" />
+                 </font>
+             </Label>
+         </children></Pane>
+   </children>
+</Pane>
