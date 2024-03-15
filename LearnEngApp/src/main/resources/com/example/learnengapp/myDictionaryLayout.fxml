@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.MyDictionaryLayoutController">
+   <children>
+      <Label layoutX="89.0" layoutY="14.0" prefHeight="31.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Từ điển của bạn">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+       <Pane layoutX="23.0" layoutY="65.0" prefHeight="209.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-radius: 50;">
+           <children>
+               <ImageView fx:id="cameraImageView" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/Camera_light.png" />
+                   </image>
+               </ImageView>
+               <Circle fill="#1f93ff00" layoutX="25.0" layoutY="72.0" radius="22.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: D9D9D9;" />
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/notebook_light.png" />
+                   </image>
+               </ImageView>
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/Test.png" />
+                   </image></ImageView>
+               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@icon/User_cicrle_light.png" />
+                   </image>
+               </ImageView>
+           </children></Pane>
+      <Pane layoutX="89.0" layoutY="50.0" prefHeight="328.0" prefWidth="494.0" style="-fx-border-color: black; -fx-border-radius: 8;">
+         <children>
+            <Pane layoutX="280.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 36; -fx-border-radius: 36; -fx-border-color: black;">
+               <children>
+                  <TextField prefHeight="40.0" prefWidth="200.0" promptText="Nhập ..." style="-fx-background-radius: 36;" />
+               </children></Pane>
+         </children></Pane>
+   </children>
+</Pane>
