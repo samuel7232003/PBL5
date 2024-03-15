@@ -1,5 +1,4 @@
 package com.example.learnengapp.controller;
 
-public class TakePhotoController {
-
+public class WordLayoutController {
 }

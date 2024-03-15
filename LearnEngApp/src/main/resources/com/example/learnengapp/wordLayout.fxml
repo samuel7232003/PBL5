@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.CameraLayoutController">
-   <stylesheets>
-      <URL value="@style.css" /> <!-- Liên kết với file CSS -->
-   </stylesheets>
-
+<Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.WordLayoutController">
    <children>
       <Pane layoutX="22.0" layoutY="43.0" prefHeight="50.0" prefWidth="50.0" style="-fx-border-radius: 50; -fx-border-color: FFC312;">
          <children>
@@ -42,33 +37,37 @@
                </image>
             </ImageView>
          </children></Pane>
-      
-      <Pane layoutX="95.0" layoutY="29.0" prefHeight="360.0" prefWidth="582.0" style="-fx-border-color: black; -fx-border-radius: 8;">
+
+      <Pane layoutX="164.0" layoutY="55.0" prefHeight="195.0" prefWidth="353.0" style="-fx-border-color: black; -fx-border-radius: 8;">
          <children>
-            <ImageView preserveRatio="true" />
+               <Label layoutX="49.0" layoutY="36.0" prefHeight="70.0" prefWidth="155.0" style="-fx-font-weight: bold; -fx-text-fill: orange;" text="Fish">
+                  <font>
+                     <Font size="48.0" />
+                  </font>
+               </Label>
+               <Label layoutX="204.0" layoutY="46.0" prefHeight="34.0" prefWidth="101.0" style="-fx-border-color: orange; -fx-border-radius: 3; -fx-padding: 0 0 0 5;" text="/kɑːr/">
+                  <font>
+                     <Font size="24.0" />
+                  </font></Label>
+               <Label layoutX="49.0" layoutY="117.0" prefHeight="35.0" prefWidth="155.0" style="-fx-font-weight: bold;" text="Con cá">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Label>
+            <Pane layoutX="212.0" layoutY="110.0" prefHeight="50.0" prefWidth="50.0" style="-fx-border-radius: 50; -fx-border-color: FFC312; -fx-border-width: 3;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/sound_max_light.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children></Pane>
 
-      <Pane layoutX="34.0" layoutY="405.0" prefHeight="84.0" prefWidth="189.0" style="-fx-border-radius: 8; -fx-border-color: FFC312; -fx-background-color: FFFFFF; -fx-border-width: 2;">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="10.0" prefWidth="82.0" style="-fx-font-weight: bold; -fx-text-fill: orange;" text="Fish">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="95.0" layoutY="17.0" prefHeight="22.0" prefWidth="63.0" style="-fx-border-color: orange; -fx-border-radius: 3; -fx-padding: 0 0 0 5;" text="/kɑːr/">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Label layoutX="13.0" layoutY="45.0" prefHeight="17.0" prefWidth="82.0" style="-fx-font-weight: bold;" text="Con cá">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="96.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icon/sound_max_light.png" />
-               </image>
-            </ImageView>
-         </children></Pane>
+      <ImageView fitHeight="188.0" fitWidth="353.0" layoutX="173.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/fish.jpg" />
+         </image></ImageView>
    </children>
 </Pane>

@@ -7,22 +7,28 @@
 
 <Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.LoginController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+      <TextField layoutX="-161.0" layoutY="103.0" prefHeight="25.0" prefWidth="107.0" />
+      <ImageView fitHeight="639.0" fitWidth="919.0" layoutX="-119.0" layoutY="-94.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@background.jpg" />
+            <Image url="@bgr.jpg" />
          </image></ImageView>
-      <Pane layoutX="119.0" layoutY="125.0" prefHeight="163.0" prefWidth="463.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+      <Pane layoutX="105.0" layoutY="286.0" prefHeight="163.0" prefWidth="463.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: orange; -fx-border-width: 5; -fx-border-radius: 8;">
          <children>
             <TextField layoutX="88.0" layoutY="25.0" prefHeight="47.0" prefWidth="288.0" promptText="Nhập tên của bạn" style="-fx-background-color: #d9d9d9; -fx-background-radius: 15;">
                <font>
                   <Font size="17.0" />
                </font>
             </TextField>
-            <Button onAction="#login" layoutX="161.0" layoutY="102.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="143.0" style="-fx-background-color: FFC312; -fx-font-weight: bold; -fx-background-radius: 10;" text="Đăng nhập" textFill="WHITE">
+            <Button layoutX="161.0" layoutY="102.0" mnemonicParsing="false" onAction="#login" prefHeight="47.0" prefWidth="143.0" style="-fx-background-color: FFC312; -fx-font-weight: bold; -fx-background-radius: 10;" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
          </children></Pane>
+      <Label layoutX="14.0" layoutY="48.0" prefHeight="47.0" prefWidth="390.0" style="-fx-text-fill: FFC312; -fx-font-weight: bold; -fx-background-color: white; -fx-background-radius: 8;" text="Học tiếng anh bằng hình ảnh">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
