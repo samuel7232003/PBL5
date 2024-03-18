@@ -7,53 +7,105 @@
 <?import javafx.scene.text.*?>
 
 <Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.ChoseTestLayoutController">
-   <children>
-       <Pane layoutX="23.0" layoutY="65.0" prefHeight="209.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-radius: 50;">
-           <children>
-               <Circle fill="#1f93ff00" layoutX="25.0" layoutY="25.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: D9D9D9;" />
-               <ImageView fx:id="cameraImageView" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@icon/Camera_light.png" />
-                   </image>
-               </ImageView>
-               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@icon/notebook_light.png" />
-                   </image>
-               </ImageView>
-               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@icon/Test.png" />
-                   </image></ImageView>
-               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@icon/User_cicrle_light.png" />
-                   </image>
-               </ImageView>
-           </children></Pane>
-       
-      <Pane layoutX="130.0" layoutY="29.0" prefHeight="443.0" prefWidth="513.0" style="-fx-border-color: FFC312; -fx-border-width: 1; -fx-border-radius: 8;">
+    <children>
+        <Pane layoutX="23.0" layoutY="65.0" prefHeight="209.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-radius: 50;">
+            <children>
+                <Circle fill="#1f93ff00" layoutX="25.0" layoutY="121.0" radius="23.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: D9D9D9;" />
+                <ImageView fx:id="cameraImageView" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icon/Camera_light.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icon/notebook_light.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icon/Test.png" />
+                    </image></ImageView>
+                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icon/User_cicrle_light.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+        <Label layoutX="96.0" layoutY="14.0" prefHeight="31.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Kiểm tra từ vựng">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+        <Pane layoutX="96.0" layoutY="53.0" prefHeight="422.0" prefWidth="582.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: ffffff;">
          <children>
-            <Label layoutX="87.0" layoutY="34.0" prefHeight="53.0" prefWidth="339.0" style="-fx-font-weight: bold;" text="VOCABULARY TEST" textFill="#ffc312">
-               <font>
-                  <Font size="36.0" />
-               </font></Label>
-            <Line endX="122.79998779296875" layoutX="249.0" layoutY="98.0" startX="-108.20001220703125" stroke="#e1a500" strokeWidth="2.0" />
-            <Label layoutX="120.0" layoutY="153.0" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: FFC312; -fx-label-padding: 0 0 0 60;" text="10 Words" textFill="#f25c00">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-             <Label layoutX="120.0" layoutY="240.0" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: ffc312; -fx-label-padding: 0 0 0 60;" text="20 Words" textFill="#f25c00">
-                 <font>
-                     <Font size="36.0" />
-                 </font>
-             </Label>
-             <Label layoutX="120.0" layoutY="330.0" prefHeight="59.0" prefWidth="274.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: ffc312; -fx-label-padding: 0 0 0 60;" text="30 Words" textFill="#f25c00">
-                 <font>
-                     <Font size="36.0" />
-                 </font>
-             </Label>
+            <Pane layoutX="57.0" layoutY="68.0" prefHeight="287.0" prefWidth="124.0" style="-fx-background-color: d9d9d9; -fx-background-radius: 8;">
+               <children>
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="84.0" prefHeight="119.0" prefWidth="46.0" style="-fx-wrap-text: true; -fx-text-alignment: center; -fx-font-weight: light;" text="10từ">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/Tick.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="34.0" layoutY="2.0" text="Chọn">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children></Pane>
+
+             <Pane layoutX="229.0" layoutY="68.0" prefHeight="287.0" prefWidth="124.0" style="-fx-background-color: d9d9d9; -fx-background-radius: 8;">
+                 <children>
+                     <Label alignment="CENTER" layoutX="39.0" layoutY="84.0" prefHeight="119.0" prefWidth="46.0" style="-fx-wrap-text: true; -fx-text-alignment: center; -fx-font-weight: light;" text="15từ">
+                         <font>
+                             <Font size="35.0" />
+                         </font>
+                     </Label>
+                     <Pane layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
+                         <children>
+                             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                     <Image url="@icon/Tick.png" />
+                                 </image>
+                             </ImageView>
+                             <Label layoutX="34.0" layoutY="2.0" text="Chọn">
+                                 <font>
+                                     <Font size="16.0" />
+                                 </font>
+                             </Label>
+                         </children>
+                     </Pane>
+                 </children></Pane>
+
+             <Pane layoutX="401.0" layoutY="68.0" prefHeight="287.0" prefWidth="124.0" style="-fx-background-color: d9d9d9; -fx-background-radius: 8;">
+                 <children>
+                     <Label alignment="CENTER" layoutX="39.0" layoutY="84.0" prefHeight="119.0" prefWidth="46.0" style="-fx-wrap-text: true; -fx-text-alignment: center; -fx-font-weight: light;" text="20từ">
+                         <font>
+                             <Font size="35.0" />
+                         </font>
+                     </Label>
+                     <Pane layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
+                         <children>
+                             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                     <Image url="@icon/Tick.png" />
+                                 </image>
+                             </ImageView>
+                             <Label layoutX="34.0" layoutY="2.0" text="Chọn">
+                                 <font>
+                                     <Font size="16.0" />
+                                 </font>
+                             </Label>
+                         </children>
+                     </Pane>
+                 </children></Pane>
          </children></Pane>
-   </children>
+    </children>
 </Pane>
