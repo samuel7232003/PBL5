@@ -72,11 +72,15 @@
                         </Label>
                   <Pane layoutX="92.0" layoutY="31.0" prefHeight="31.0" prefWidth="31.0">
                      <children>
-                        <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icon/Dell.png" />
-                           </image>
-                        </ImageView>
+                        <Pane prefHeight="31.0" prefWidth="31.0" style="-fx-background-color: FAA2A2; -fx-background-radius: 36;">
+                           <children>
+                              <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icon/Dell.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
                      </children></Pane>
                     </children>
                 </Pane>
