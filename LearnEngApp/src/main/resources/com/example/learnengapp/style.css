@@ -3,3 +3,12 @@
     -fx-border-color: black; /* Màu sắc của viền */
     -fx-border-width: 2px; /* Độ dày của viền */
 }
+
+#item{
+    -fx-background-radius: 8;
+}
+
+#word{
+    -fx-font-size: 24;
+    -fx-fill-width: bold;
+}

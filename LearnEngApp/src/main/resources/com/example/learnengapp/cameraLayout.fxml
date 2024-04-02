@@ -13,6 +13,11 @@
    </stylesheets>
 
    <children>
+      <Label fx:id="test" layoutX="23.0" layoutY="14.0" prefHeight="27.0" prefWidth="201.0" style="-fx-font-weight: bold;" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
       <Pane layoutX="23.0" layoutY="65.0" prefHeight="209.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-radius: 50;">
          <children>
             <Circle fill="#1f93ff00" layoutX="25.0" layoutY="28.0" radius="22.0" stroke="#fcfcfc" strokeType="INSIDE" style="-fx-fill: D9D9D9;" />
@@ -37,32 +42,36 @@
             </ImageView>
          </children></Pane>
       
-      <Pane layoutX="95.0" layoutY="29.0" prefHeight="360.0" prefWidth="582.0" style="-fx-border-color: black; -fx-border-radius: 8;">
+      <Pane layoutX="95.0" layoutY="50.0" prefHeight="339.0" prefWidth="582.0" style="-fx-border-color: black; -fx-border-radius: 8;">
          <children>
             <ImageView preserveRatio="true" />
          </children></Pane>
 
-      <Pane layoutX="34.0" layoutY="405.0" prefHeight="84.0" prefWidth="189.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 8;">
+      <HBox fx:id="listVocab" layoutX="15.0" layoutY="399.0" prefHeight="80.0" prefWidth="671.0">
          <children>
-            <Label layoutX="13.0" layoutY="11.0" prefHeight="10.0" prefWidth="82.0" style="-fx-font-weight: bold;" text="Fish">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="95.0" layoutY="17.0" prefHeight="22.0" prefWidth="63.0" text="/kɑːr/">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Label layoutX="13.0" layoutY="45.0" prefHeight="17.0" prefWidth="82.0" style="-fx-font-weight: bold;" text="Con cá">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="96.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icon/sound_max_light.png" />
-               </image>
-            </ImageView>
-         </children></Pane>
+<!--            <Pane layoutX="34.0" layoutY="405.0" prefHeight="84.0" prefWidth="189.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 8; -fx-padding: 0 20 0 0;">-->
+<!--               <children>-->
+<!--                  <Label layoutX="13.0" layoutY="11.0" prefHeight="10.0" prefWidth="82.0" style="-fx-font-weight: bold;" text="Fish">-->
+<!--                     <font>-->
+<!--                        <Font size="24.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <Label layoutX="95.0" layoutY="17.0" prefHeight="22.0" prefWidth="63.0" text="/kɑːr/">-->
+<!--                     <font>-->
+<!--                        <Font size="14.0" />-->
+<!--                     </font></Label>-->
+<!--                  <Label layoutX="13.0" layoutY="45.0" prefHeight="17.0" prefWidth="82.0" style="-fx-font-weight: bold;" text="Con cá">-->
+<!--                     <font>-->
+<!--                        <Font size="16.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="96.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                     <image>-->
+<!--                        <Image url="@icon/sound_max_light.png" />-->
+<!--                     </image>-->
+<!--                  </ImageView>-->
+<!--               </children></Pane>-->
+
+         </children></HBox>
    </children>
 </Pane>

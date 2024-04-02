@@ -51,17 +51,17 @@
             </Pane>
             <Pane layoutX="20.0" layoutY="20.0" prefHeight="90.0" prefWidth="246.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 8;">
                <children>
-                  <Label layoutX="14.0" layoutY="7.0" prefHeight="31.0" prefWidth="66.0" style="-fx-font-weight: bold;" text="Apple">
+                  <Label fx:id="wordVocab" layoutX="14.0" layoutY="7.0" prefHeight="31.0" prefWidth="66.0" style="-fx-font-weight: bold;" text="Apple">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="45.0" style="-fx-font-weight: light; -fx-font-family: inter;" text="Quả táo">
+                  <Label fx:id="meanVocab" layoutX="14.0" layoutY="45.0" style="-fx-font-weight: light; -fx-font-family: inter;" text="Quả táo">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="101.0" layoutY="10.0" text="/ˈæpl/">
+                  <Label fx:id="phoneticVocab" layoutX="101.0" layoutY="10.0" text="/ˈæpl/">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -84,18 +84,18 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="100.0" layoutY="131.0" prefHeight="46.0" prefWidth="346.0" style="-fx-wrap-text: true; -fx-font-family: inter;" text="Newton reasoned that there must be a force such as gravity, when an apple fell on his head.">
+            <Label fx:id="exampleVocab" layoutX="100.0" layoutY="131.0" prefHeight="46.0" prefWidth="346.0" style="-fx-wrap-text: true; -fx-font-family: inter;" text="Newton reasoned that there must be a force such as gravity, when an apple fell on his head.">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label layoutX="20.0" layoutY="190.0" style="-fx-font-weight: bold;" text="Hình ảnh minh họa">
+            <Label  layoutX="20.0" layoutY="190.0" style="-fx-font-weight: bold;" text="Hình ảnh minh họa">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageVocab" fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@image/apple.jpg" />
+                  <Image fx:id="" url="@image/apple.jpg" />
                </image>
             </ImageView>
       

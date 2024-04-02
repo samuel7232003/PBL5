@@ -13,7 +13,7 @@
          </image>
       </ImageView>
       <Pane layoutX="230.0" layoutY="88.0" prefHeight="325.0" prefWidth="240.0" style="-fx-background-color: ffffff; -fx-border-color: black; -fx-border-radius: 8; -fx-opacity: 0.8" />
-      <TextField layoutX="255.0" layoutY="210.0" prefHeight="46.0" prefWidth="191.0" promptText="Nhập tên của bạn ..." style="-fx-font-weight: bold;">
+      <TextField fx:id="tf_username" layoutX="255.0" layoutY="210.0" prefHeight="46.0" prefWidth="191.0" promptText="Nhập tên của bạn ..." style="-fx-font-weight: bold;">
          <font>
             <Font size="14.0" />
          </font>
