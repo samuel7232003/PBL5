@@ -37,4 +37,9 @@ public class Data {
         Stage stage1 = new Stage();
         stage = stage1;
     }
+
+    public Data(User user, Vocab vocab){
+        User user1 = new User(user);
+        Vocab vocab1 = new Vocab(vocab);
+    }
 }

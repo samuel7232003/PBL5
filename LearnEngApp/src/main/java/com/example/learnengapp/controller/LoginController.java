@@ -1,5 +1,6 @@
 package com.example.learnengapp.controller;
 
+import com.example.learnengapp.DAO.UserDAO;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.User;
 import javafx.fxml.FXML;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.example.learnengapp.DAO.UserDAO.getUser;
+
 public class LoginController implements Initializable {
     @FXML
     public TextField tf_username;
@@ -29,10 +32,8 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         data = new Data();
-        listUser = new ArrayList<>();
-        listUser.add(new User("1", "Huy"));
-        listUser.add(new User("2", "VietThanh"));
-        listUser.add(new User("3", "DucThanh"));
+        listUser = new ArrayList<User>();
+        listUser = getUser();
     }
 
     public void login(MouseEvent event) throws IOException {
@@ -50,10 +51,9 @@ public class LoginController implements Initializable {
     }
 
     public void loadHome(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameralayout.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         stage.setTitle("Camera");
         stage.setScene(scene);
-        stage.show();
     }
 }

@@ -41,4 +41,10 @@ public class User {
         this.username = username;
         this.listVocab = listVocab;
     }
+
+    public User(User user){
+        this.idUser = user.getIdUser();
+        this.username = user.getUsername();
+        this.listVocab = user.getListVocab();
+    }
 }

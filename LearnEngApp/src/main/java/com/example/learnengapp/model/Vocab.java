@@ -56,12 +56,21 @@ public class Vocab {
         this.example = example;
     }
 
-    public Vocab(String idVocab, String word, String mean, String phonetic, String image, String example) {
+    public Vocab(String idVocab, String word, String mean, String phonetic,String example, String image) {
         this.idVocab = idVocab;
         this.word = word;
         this.mean = mean;
         this.phonetic = phonetic;
         this.image = image;
         this.example = example;
+    }
+
+    public Vocab(Vocab vocab){
+        this.idVocab = vocab.getIdVocab();
+        this.word = vocab.getWord();
+        this.mean = vocab.getMean();
+        this.phonetic = vocab.getPhonetic();
+        this.example = vocab.getExample();
+        this.image = vocab.getImage();
     }
 }
