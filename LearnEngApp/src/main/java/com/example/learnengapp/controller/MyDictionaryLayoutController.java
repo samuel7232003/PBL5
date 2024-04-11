@@ -113,106 +113,87 @@ public class MyDictionaryLayoutController  implements Initializable {
             }
         });
 
-//        findWord.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                String keyword = findWord.getText();
-//                keyword = stringProcess(keyword);
-//                System.out.println(keyword);
-//                Vocab vocab = new Vocab(getVocabByWord(keyword));
-//                if(vocab.getIdVocab() != ""){
-//                    if(vocab.getWord().equals(keyword)){
-//                        System.out.println(vocab.getMean());
-//                        listVocablib.getChildren().clear();
+        findWord.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String keyword = stringProcess(findWord.getText());
+                System.out.println(keyword);
+                Vocab vocab = new Vocab(getVocabByWord(keyword));
+                System.out.println(vocab.getMean());
+
+                if(Objects.equals(findWord.getText(), "")){
+                    Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
+                    Scene scene = null;
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 700, 500);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    data.setStage(stage);
+                    data.getStage().setScene(scene);
+
+                }
+                if(Objects.equals(vocab.getWord(), keyword)){
+//                    Pane pane = new Pane();
+//                    pane.setId(vocab.getIdVocab());
+//                    pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
 //
-//                        Pane pane = new Pane();
-//                        pane.setId(vocab.getIdVocab());
-//                        pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
+//                    pane.setPrefHeight(90);
+//                    pane.setPrefWidth(160);
+//                    pane.setMinSize(160, 90);
+//                    pane.setMaxSize(160, 90);
 //
-//                        pane.setPrefHeight(90);
-//                        pane.setPrefWidth(160);
-//                        pane.setMinSize(160, 90);
-//                        pane.setMaxSize(160, 90);
+//                    Label word = new Label(vocab.getWord());
+//                    pane.getChildren().add(word);
+//                    word.setLayoutX(13);
+//                    word.setLayoutY(11);
+//                    word.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
 //
-//                        Label word = new Label(vocab.getWord());
-//                        pane.getChildren().add(word);
-//                        word.setLayoutX(13);
-//                        word.setLayoutY(11);
-//                        word.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
+//                    Label mean = new Label(vocab.getMean());
+//                    pane.getChildren().add(mean);
+//                    mean.setLayoutX(13);
+//                    mean.setLayoutY(60);
+//                    mean.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
 //
-//                        Label mean = new Label(vocab.getMean());
-//                        pane.getChildren().add(mean);
-//                        mean.setLayoutX(13);
-//                        mean.setLayoutY(60);
-//                        mean.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
+//                    Label phonetic = new Label(vocab.getPhonetic());
+//                    pane.getChildren().add(phonetic);
+//                    phonetic.setLayoutX(13);
+//                    phonetic.setLayoutY(40);
+//                    phonetic.setStyle("-fx-font-size: 14;");
 //
-//                        Label phonetic = new Label(vocab.getPhonetic());
-//                        pane.getChildren().add(phonetic);
-//                        phonetic.setLayoutX(13);
-//                        phonetic.setLayoutY(40);
-//                        phonetic.setStyle("-fx-font-size: 14;");
+//                    listVocablib.getChildren().clear();
+//                    listVocablib.add(pane, 0, 0);
 //
-//                        listVocablib.add(pane, 0, 0);
-//                    }else{
-//                        listVocablib.getChildren().clear();
-//                    }
-//
-//                }else if(vocab.getIdVocab() == ""){
-//                    int roww = 0;
-//                    int coll = 0;
-//
-//                    for (Vocab vocabb : listVocab) {
-//                        Pane pane = new Pane();
-//                        pane.setId(vocabb.getIdVocab());
-//                        pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
-//
-//                        pane.setPrefHeight(90);
-//                        pane.setPrefWidth(160);
-//                        pane.setMinSize(160, 90);
-//                        pane.setMaxSize(160, 90);
-//
-//                        Label word = new Label(vocabb.getWord());
-//                        pane.getChildren().add(word);
-//                        word.setLayoutX(13);
-//                        word.setLayoutY(11);
-//                        word.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
-//
-//                        Label mean = new Label(vocabb.getMean());
-//                        pane.getChildren().add(mean);
-//                        mean.setLayoutX(13);
-//                        mean.setLayoutY(60);
-//                        mean.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
-//
-//                        Label phonetic = new Label(vocabb.getPhonetic());
-//                        pane.getChildren().add(phonetic);
-//                        phonetic.setLayoutX(13);
-//                        phonetic.setLayoutY(40);
-//                        phonetic.setStyle("-fx-font-size: 14;");
-//
-//                        listVocablib.add(pane, coll, roww);
-//
-//                        // Di chuyển tới cột tiếp theo
-//                        coll++;
-//
-//                        // Nếu đã đến cột cuối cùng, chuyển sang hàng mới
-//                        if (coll == 2) {
-//                            coll = 0;
-//                            roww++;
+//                    pane.setOnMouseClicked(mouseEvent -> {
+//                        try {
+//                            data.setVocab(vocab);
+//                            Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                            loadDetailsView(stage);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
 //                        }
-//
-//                        pane.setOnMouseClicked(mouseEvent -> {
-//                            try {
-//                                data.setVocab(vocab);
-//                                Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-//                                loadDetailsView(stage);
-//                            } catch (IOException e) {
-//                                throw new RuntimeException(e);
-//                            }
-//                        });
-//                    }
-//                }
-//            }
-//        });
+//                    });
+
+                    data.setVocab(vocab);
+                    Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
+                    Scene scene;
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 700, 500);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    data.setStage(stage);
+                    data.getStage().setScene(scene);
+                }else{
+                    listVocablib.getChildren().clear();
+                    Label label = new Label("Không tìm thấy từ vựng");
+                    listVocablib.getChildren().add(label);
+                    label.setStyle("-fx-font-size: 24");
+                }
+            }
+        });
     }
     public void loadDetailsView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));

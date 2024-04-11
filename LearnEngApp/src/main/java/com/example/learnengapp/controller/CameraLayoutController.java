@@ -79,8 +79,8 @@ public class CameraLayoutController implements Initializable {
             pane.getChildren().add(speaker);
             speaker.setFitWidth(34);
             speaker.setFitHeight(34);
-            speaker.setLayoutX(105);
-            speaker.setLayoutY(41);
+            speaker.setLayoutX(125);
+            speaker.setLayoutY(35);
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/learnengapp/icon/speaker.png")));
             speaker.setImage(image);
 
