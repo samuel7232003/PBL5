@@ -1,6 +1,7 @@
 package com.example.learnengapp.controller;
 
 import com.example.learnengapp.index;
+import com.example.learnengapp.model.ServerData;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 
 
 public class WordLayoutController implements Initializable {
-    private Data data;
+//    private Data data;
     @FXML
     private Label wordVocab;
     @FXML
@@ -38,15 +39,14 @@ public class WordLayoutController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        data = new Data();
-        System.out.println(data.getUser().getUsername());
+        System.out.println(ServerDataController.getData().getUser().getUsername());
 
-        wordVocab.setText(data.getVocab().getWord());
-        meanVocab.setText(data.getVocab().getMean());
-        phoneticVocab.setText(data.getVocab().getPhonetic());
-        exampleVocab.setText(data.getVocab().getExample());
+        wordVocab.setText(ServerDataController.getData().getVocab().getWord());
+        meanVocab.setText(ServerDataController.getData().getVocab().getMean());
+        phoneticVocab.setText(ServerDataController.getData().getVocab().getPhonetic());
+        exampleVocab.setText(ServerDataController.getData().getVocab().getExample());
 
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/learnengapp/image/" + data.getVocab().getImage())));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/learnengapp/image/" + ServerDataController.getData().getVocab().getImage())));
         imageVocab.setImage(image);
 
         backToMain.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -60,8 +60,8 @@ public class WordLayoutController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                data.setStage(stage);
-                data.getStage().setScene(scene);
+                ServerDataController.getData().setStage(stage);
+                ServerDataController.getData().getStage().setScene(scene);
             }
         });
 
@@ -76,8 +76,8 @@ public class WordLayoutController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                data.setStage(stage);
-                data.getStage().setScene(scene);
+                ServerDataController.getData().setStage(stage);
+                ServerDataController.getData().getStage().setScene(scene);
             }
         });
     }

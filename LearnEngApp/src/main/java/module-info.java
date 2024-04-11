@@ -11,4 +11,6 @@ module com.example.learnengapp {
 
     opens com.example.learnengapp.controller to javafx.fxml;
     exports com.example.learnengapp.controller;
+    exports com.example.learnengapp.Socket;
+    opens com.example.learnengapp.Socket to javafx.fxml;
 }

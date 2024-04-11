@@ -46,4 +46,23 @@ public class UserDAO extends connectMySQL{
         }
         return user;
     }
+    public static User getUserByName(String usernameCheck){
+        User user;
+        try{
+            Connection conn = connectSQL();
+            var sql = "select * FROM user WHERE username =  '" + usernameCheck + "'";
+            var statement = conn.prepareStatement(sql);
+            var resultSet = statement.executeQuery();
+            String id = "", username = "";
+
+            while (resultSet.next()){
+                id = resultSet.getString("idUser");
+                username = resultSet.getString("username");
+            }
+            user = new User(id, username);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
 }

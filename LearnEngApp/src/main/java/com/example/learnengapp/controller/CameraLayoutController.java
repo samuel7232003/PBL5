@@ -23,9 +23,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import static com.example.learnengapp.DAO.VocabDAO.getVocab;
-
 public class CameraLayoutController implements Initializable {
     @FXML
     public HBox listVocab;
@@ -35,18 +32,12 @@ public class CameraLayoutController implements Initializable {
     private ImageView btnDictionary;
     @FXML
     private ImageView cameraImageView;
-    public Data data;
-    private ArrayList<Vocab> vocabArrayList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        data = new Data();
-        test.setText("Hello " + data.getUser().getUsername());
+        test.setText("Hello " + ServerDataController.getData().getUser().getUsername());
         listVocab.setStyle("-fx-spacing: 20");
 
-        vocabArrayList = new ArrayList<>();
-        vocabArrayList = getVocab();
-
-        for (Vocab vocab : vocabArrayList){
+        for (Vocab vocab : ServerDataController.getData().getFullVocab()){
             Pane pane = new Pane();
             pane.setId(vocab.getIdVocab());
 //            pane.setBackground(Background.fill(Paint.valueOf("#d9d9d9")));
@@ -88,7 +79,7 @@ public class CameraLayoutController implements Initializable {
 
             pane.setOnMouseClicked(mouseEvent -> {
                 try {
-                    data.setVocab(vocab);
+                    ServerDataController.getData().setVocab(vocab);
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                     loadDetailsView(stage);
                 } catch (IOException e) {
@@ -139,14 +130,14 @@ public class CameraLayoutController implements Initializable {
     public void loadDetailsView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        data.setStage(stage);
-        data.getStage().setScene(scene);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
     }
 
     public void loadDictionaryView(Stage stage)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        data.setStage(stage);
-        data.getStage().setScene(scene);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
     }
 }

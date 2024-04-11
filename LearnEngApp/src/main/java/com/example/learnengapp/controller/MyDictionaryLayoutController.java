@@ -1,6 +1,7 @@
 package com.example.learnengapp.controller;
 
 import com.example.learnengapp.index;
+import com.example.learnengapp.model.ServerData;
 import com.example.learnengapp.model.Vocab;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,12 +28,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static com.example.learnengapp.DAO.VocabDAO.getVocab;
-import static com.example.learnengapp.DAO.VocabDAO.getVocabByWord;
-
 public class MyDictionaryLayoutController  implements Initializable {
-    Data data = new Data();
-    private ArrayList<Vocab> listVocab;
     @FXML
     public GridPane listVocablib;
     @FXML
@@ -41,8 +37,6 @@ public class MyDictionaryLayoutController  implements Initializable {
     private TextField findWord;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listVocab = new ArrayList<>();
-        listVocab = getVocab();
 
         listVocablib.setVgap(15);
         listVocablib.setHgap(15);
@@ -51,7 +45,7 @@ public class MyDictionaryLayoutController  implements Initializable {
         int row = 0;
         int col = 0;
 
-        for (Vocab vocab : listVocab) {
+        for (Vocab vocab : ServerDataController.getData().getFullVocab()) {
             Pane pane = new Pane();
             pane.setId(vocab.getIdVocab());
             pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
@@ -92,7 +86,7 @@ public class MyDictionaryLayoutController  implements Initializable {
 
             pane.setOnMouseClicked(mouseEvent -> {
                 try {
-                    data.setVocab(vocab);
+                    ServerDataController.getData().setVocab(vocab);
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                     loadDetailsView(stage);
                 } catch (IOException e) {
@@ -118,7 +112,7 @@ public class MyDictionaryLayoutController  implements Initializable {
             public void handle(ActionEvent event) {
                 String keyword = stringProcess(findWord.getText());
                 System.out.println(keyword);
-                Vocab vocab = new Vocab(getVocabByWord(keyword));
+                Vocab vocab = ServerDataController.searchVocab(keyword);
                 System.out.println(vocab.getMean());
 
                 if(Objects.equals(findWord.getText(), "")){
@@ -130,8 +124,8 @@ public class MyDictionaryLayoutController  implements Initializable {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    data.setStage(stage);
-                    data.getStage().setScene(scene);
+                    ServerDataController.getData().setStage(stage);
+                    ServerDataController.getData().getStage().setScene(scene);
 
                 }
                 if(Objects.equals(vocab.getWord(), keyword)){
@@ -175,7 +169,7 @@ public class MyDictionaryLayoutController  implements Initializable {
 //                        }
 //                    });
 
-                    data.setVocab(vocab);
+                    ServerDataController.getData().setVocab(vocab);
                     Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                     FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
                     Scene scene;
@@ -184,8 +178,8 @@ public class MyDictionaryLayoutController  implements Initializable {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    data.setStage(stage);
-                    data.getStage().setScene(scene);
+                    ServerDataController.getData().setStage(stage);
+                    ServerDataController.getData().getStage().setScene(scene);
                 }else{
                     listVocablib.getChildren().clear();
                     Label label = new Label("Không tìm thấy từ vựng");
@@ -198,15 +192,15 @@ public class MyDictionaryLayoutController  implements Initializable {
     public void loadDetailsView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        data.setStage(stage);
-        data.getStage().setScene(scene);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
     }
 
     public void loadCameraView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        data.setStage(stage);
-        data.getStage().setScene(scene);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
     }
 
     public static String stringProcess(String str) {
