@@ -9,11 +9,8 @@ import java.util.Hashtable;
 public class SocketController {
     private ServerSocket serverSocket;
     static ArrayList<DeviceHandler> devices; // Quản lý
-    static ArrayList<String> idDevices;
     static ArrayList<String> results;
     static String linkCam = "0";
-    static public Hashtable<String, Integer> vocabTest;
-
     public static String getLinkCam() {
         return linkCam;
     }
@@ -30,10 +27,6 @@ public class SocketController {
         SocketController.devices = devices;
     }
 
-    public static ArrayList<String> getIdDevices() {
-        return idDevices;
-    }
-
     public static ArrayList<String> getResults() {
         return results;
     }
@@ -42,28 +35,11 @@ public class SocketController {
         SocketController.results = results;
     }
 
-    public static void setIdDevice(ArrayList<String> idDevices) {
-        SocketController.idDevices = idDevices;
-    }
     public static void addDevice(DeviceHandler device){devices.add(device);}
-    public static void addIdDevice(String idDevice) {idDevices.add(idDevice);}
     public SocketController() {
-        idDevices = new ArrayList<>();
         devices = new ArrayList<>();
         results = new ArrayList<>();
-        vocabTest = new Hashtable<>();
-        vocabTest.put("Boy", 63);
-        vocabTest.put("Bottle", 57);
-        vocabTest.put("Book", 54);
-        vocabTest.put("Building", 70);
-        vocabTest.put("Computer keyboard", 127);
-        vocabTest.put("Clothing", 115);
-        vocabTest.put("Desk",153);
-        vocabTest.put("Door", 164);
-    }
 
-    public static Hashtable<String, Integer> getVocabTest() {
-        return vocabTest;
     }
 
     public void openSocket(){

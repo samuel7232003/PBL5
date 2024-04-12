@@ -1,11 +1,15 @@
 package com.example.learnengapp.Socket;
 
+import com.example.learnengapp.controller.ServerDataController;
+
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DeviceHandler  extends Thread{
+    private String nameDevice;
     private OutputStream osHandler;
     private InputStream isHandler;
     private Socket deviceSocket;
@@ -39,18 +43,18 @@ public class DeviceHandler  extends Thread{
             if(txt.contains("CAM")){
                 String linkCam = this.bufferedReader.readLine();
                 SocketController.setLinkCam(linkCam);
-
-                SocketController.addIdDevice("CAMSOUND");
+                this.nameDevice = "CAM";
                 System.out.println("Đã kết nối đến camera có id: " + SocketController.getLinkCam());
             }
             else if(txt.equals("MODEL")){
                 sendLinkCam();
-                SocketController.addIdDevice("MODEL");
+                this.nameDevice = "MODEL";
                 System.out.println("Đã kết nối đến model");
                 detectByWebcam(); // khởi động camera
             }
             else{
                 System.out.println("Đã kết nối đến 1 device chưa biết");
+                this.nameDevice = null;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -63,35 +67,29 @@ public class DeviceHandler  extends Thread{
                 if (header == null) throw new IOException();
                 switch (header){
                     case "RESULT":{
-                        while (true){
-                            String result = this.bufferedReader.readLine();
-                            System.out.println("Kết quả được gửi về: " + result);
-                            String[] kqList = result.split(";");
-
-//                            int cnt = 0;
-//                            for (String idDV : SocketController.getIdDevices()){
-//                                if(idDV.equals("CAMSOUND")){
-//                                    for (String kq : kqList){
-//                                        System.out.println(SocketController.getVocabTest().get(kq));
-//                                        SocketController.getDevices().get(cnt).getBufferedWriter().newLine();
-//                                        SocketController.getDevices().get(cnt).getBufferedWriter().write("" + SocketController.getVocabTest().get(kq));
-//                                        SocketController.getDevices().get(cnt).getBufferedWriter().flush();
-//                                    }
-//                                }
-//                                cnt++;
-//                            }
-
-                            for (DeviceHandler deviceHandler :  SocketController.getDevices()){
-                                for(String kq : kqList){
-                                    String kqt = String.valueOf(SocketController.getVocabTest().get(kq));
-                                    if(kqt!="null") {
-                                        System.out.println(kqt);
-                                        deviceHandler.getBufferedWriter().newLine();
-                                        deviceHandler.getBufferedWriter().write("" + kqt);
-                                        deviceHandler.getBufferedWriter().flush();
-                                    }
+                        String result = this.bufferedReader.readLine();
+                        System.out.println("Kết quả được gửi về: " + result);
+                        String[] kqList = result.split(";");
+                        ArrayList<Integer> idWordList = new ArrayList<>();
+                        // lấy id của các kết quả
+                        for(String kq: kqList){
+                            String idkq = String.valueOf(ServerDataController.getData().getFullVocabDic().get(kq));
+                            if(idkq != "null"){
+                                int id = Integer.parseInt(idkq);
+                                idWordList.add(id);
+                            }
+                        }
+                        // sắp xếp mảng theo giá trị tăng dần các id
+                        idWordList.sort((o1, o2) -> o1 - o2);
+                        // gửi id của từ vựng về cho camera và sound
+                        for (DeviceHandler deviceHandler :  SocketController.getDevices()){
+                            if(deviceHandler.nameDevice == "CAM"){
+                                for(int id : idWordList){
+                                    System.out.println(id);
+                                    deviceHandler.getBufferedWriter().newLine();
+                                    deviceHandler.getBufferedWriter().write("" + id);
+                                    deviceHandler.getBufferedWriter().flush();
                                 }
-                                break;
                             }
                         }
                     }
@@ -116,46 +114,16 @@ public class DeviceHandler  extends Thread{
         try {
             this.bufferedWriter.write("DETECT");
             this.bufferedWriter.flush();
-//
-//            this.bufferedWriter.write(SocketController.getLinkCam());
-//            this.bufferedWriter.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public void TransferVocabForAudio(){
-        try {
-            int n = 1;
-            while (true){
-                try {
-                    Thread.sleep(3000); // 1000 milliseconds = 1 giây
-                } catch (InterruptedException e) {
-                    // Xử lý ngoại lệ nếu cần
-                }
-                this.bufferedWriter.newLine();
-                this.bufferedWriter.write("" + n);
-                this.bufferedWriter.flush();
-                n+=2;
-                if (n == 199) n = 1;
+    public void stopDetect() throws IOException {
+        for(DeviceHandler deviceHandler : SocketController.getDevices()){
+            if(deviceHandler.nameDevice == "CAM"){
+                deviceHandler.getBufferedWriter().write("STOP");
+                deviceHandler.getBufferedWriter().flush();
             }
-//            for(int i = 1; i < 20; i+=2) {
-//                this.bufferedWriter.newLine();
-//                this.bufferedWriter.write("" + i);
-//                this.bufferedWriter.flush();
-//            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
-    }
-    public void TransferVocabForAudio(String vocab){
-        // viết hàm get data để xuwr lý chuỗi
-        try {
-            this.bufferedWriter.newLine();
-            this.bufferedWriter.write(vocab);
-            this.bufferedWriter.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 }

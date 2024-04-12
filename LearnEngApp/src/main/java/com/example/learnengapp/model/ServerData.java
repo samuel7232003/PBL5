@@ -4,13 +4,14 @@ import com.example.learnengapp.DAO.VocabDAO;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class ServerData {
     private Stage stage;
     private User user;
     private ArrayList<Vocab> fullVocab;
     private Vocab vocab;
-
+    private Hashtable<String, Integer> fullVocabDic;
     public Vocab getVocab() {
         return vocab;
     }
@@ -45,11 +46,24 @@ public class ServerData {
 
     public ServerData() {
         stage = new Stage();
+        // get data from SQL
         fullVocab = new ArrayList<>();
         fullVocab = VocabDAO.getVocab();
+        // set data to dictionary
+        fullVocabDic = new Hashtable<>();
+        setFullVocabDic();
+
+
     }
 
     public void setUser(String idUser, String username) {
         user = new User(idUser, username);
     }
+    public void setFullVocabDic(){
+        for(Vocab vocab1 : this.fullVocab){
+            int stt = Integer.parseInt(vocab1.getIdVocab().substring(3));
+            this.fullVocabDic.put(vocab1.getWord(), stt);
+        }
+    }
+    public Hashtable<String, Integer> getFullVocabDic(){ return  this.fullVocabDic;}
 }
