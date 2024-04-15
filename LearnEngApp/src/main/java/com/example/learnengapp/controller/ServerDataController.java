@@ -3,6 +3,7 @@ package com.example.learnengapp.controller;
 import com.example.learnengapp.Socket.SocketController;
 import com.example.learnengapp.model.ServerData;
 import com.example.learnengapp.model.Vocab;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,8 +66,8 @@ public class ServerDataController {
             }
             if(n == idWordList.size()) break;
         }
-        getCameraLayoutController().reload();
     }
+
 
     public static ArrayList<Vocab> getVocabToShow() {
         return vocabToShow;
