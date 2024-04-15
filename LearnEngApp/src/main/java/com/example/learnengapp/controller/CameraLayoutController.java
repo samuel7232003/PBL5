@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -32,15 +33,21 @@ public class CameraLayoutController implements Initializable {
     private ImageView btnDictionary;
     @FXML
     private ImageView cameraImageView;
+
+    private ArrayList<Vocab> vocabArrayList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        vocabArrayList = new ArrayList<Vocab>();
+//        vocabArrayList = ServerDataController.getData().getFullVocab();
         test.setText("Hello " + ServerDataController.getData().getUser().getUsername());
         listVocab.setStyle("-fx-spacing: 20");
+        Insets marginInsets = new Insets(10, 0, 0, 0); // top, right, bottom, left
+        HBox.setMargin(listVocab, marginInsets);
         if(ServerDataController.getVocabToShow() != null){
             for (Vocab vocab : ServerDataController.getVocabToShow()){
+//                for (Vocab vocab : ServerDataController.getData().getFullVocab()){
                 Pane pane = new Pane();
                 pane.setId(vocab.getIdVocab());
-//            pane.setBackground(Background.fill(Paint.valueOf("#d9d9d9")));
                 pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
 
                 pane.setPrefHeight(90);
