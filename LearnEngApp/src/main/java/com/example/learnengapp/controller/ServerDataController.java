@@ -34,6 +34,7 @@ public class ServerDataController {
 
     public ServerDataController() {
         data = new ServerData();
+        vocabToShow  = new ArrayList<>();
         cameraLayoutController = new CameraLayoutController();
         socketController = new SocketController();
         socketController.openSocket();
@@ -47,7 +48,8 @@ public class ServerDataController {
         return null;
     }
     public static void setVocabToShow(ArrayList<Integer> idword) throws IOException {
-        // chuyển mảng từ kiêu số int sang kiểu string là các id chính thức: vcb001
+        vocabToShow.clear();
+        // chuyển mảng từ kiểu số int sang kiểu string là các id chính thức: vcb001
         ArrayList<String> idWordList = new ArrayList<>();
         for(int id : idword){
             String a;
@@ -65,7 +67,6 @@ public class ServerDataController {
             }
             if(n == idWordList.size()) break;
         }
-        getCameraLayoutController().reload();
     }
 
     public static ArrayList<Vocab> getVocabToShow() {

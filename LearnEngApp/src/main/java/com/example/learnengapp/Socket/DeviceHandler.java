@@ -72,30 +72,33 @@ public class DeviceHandler  extends Thread{
                         String result = this.bufferedReader.readLine();
                         System.out.println("Kết quả được gửi về: " + result);
                         String[] kqList = result.split(";");
-                        ArrayList<Integer> idWordList = new ArrayList<>();
-                        // lấy id của các kết quả
-                        for(String kq: kqList){
-                            String idkq = String.valueOf(ServerDataController.getData().getFullVocabDic().get(kq));
-                            if(idkq != "null"){
-                                int id = Integer.parseInt(idkq);
-                                idWordList.add(id);
-                            }
-                        }
-                        // sắp xếp mảng theo giá trị tăng dần các id
-                        idWordList.sort((o1, o2) -> o1 - o2);
-                        // gửi id của từ vựng về cho camera và sound
-                        ServerDataController.setVocabToShow(idWordList);
-                        for (DeviceHandler deviceHandler :  SocketController.getDevices()){
-                            if(deviceHandler.nameDevice == "CAM"){
-                                for(int id : idWordList){
-                                    System.out.println(id);
-                                    deviceHandler.getBufferedWriter().newLine();
-                                    deviceHandler.getBufferedWriter().write("" + id);
-                                    deviceHandler.getBufferedWriter().flush();
+                        if(kqList.length !=0 ){
+                            ArrayList<Integer> idWordList = new ArrayList<>();
+                            // lấy id của các kết quả
+                            for(String kq: kqList){
+                                String idkq = String.valueOf(ServerDataController.getData().getFullVocabDic().get(kq));
+                                if(idkq != "null"){
+                                    int id = Integer.parseInt(idkq);
+                                    idWordList.add(id);
                                 }
                             }
+                            // sắp xếp mảng theo giá trị tăng dần các id
+                            idWordList.sort((o1, o2) -> o1 - o2);
+                            // gửi id của từ vựng về cho camera và sound
+                            ServerDataController.setVocabToShow(idWordList);
+                            for (DeviceHandler deviceHandler :  SocketController.getDevices()){
+                                if(deviceHandler.nameDevice == "CAM"){
+                                    for(int id : idWordList){
+                                        System.out.println(id);
+                                        deviceHandler.getBufferedWriter().newLine();
+                                        deviceHandler.getBufferedWriter().write("" + id);
+                                        deviceHandler.getBufferedWriter().flush();
+                                    }
+                                }
+                            }
+                            reloadOnSocket();
                         }
-                        reloadOnSocket();
+
                     }
                 }
             }
@@ -105,6 +108,7 @@ public class DeviceHandler  extends Thread{
     }
     public void sendLinkCam(){
         try {
+
             this.bufferedWriter.write("WEBCAMLink");
             this.bufferedWriter.flush();
 
