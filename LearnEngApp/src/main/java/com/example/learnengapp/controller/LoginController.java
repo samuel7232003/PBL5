@@ -49,6 +49,7 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         stage.setTitle("Camera");
         stage.setScene(scene);
+//        stage.show();
     }
 
     public void loginEvent() throws IOException {

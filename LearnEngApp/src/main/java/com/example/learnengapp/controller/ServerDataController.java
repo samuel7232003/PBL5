@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ServerDataController {
     private static ServerData data;
     private static SocketController socketController;
+    private static CameraLayoutController cameraLayoutController;
     private static ArrayList<Vocab> vocabToShow;
 
     public static ServerData getData() {
@@ -25,8 +26,14 @@ public class ServerDataController {
     public static void setSocketController(SocketController socketController) {
         socketController = socketController;
     }
+
+    public static CameraLayoutController getCameraLayoutController() {
+        return cameraLayoutController;
+    }
+
     public ServerDataController() {
         data = new ServerData();
+        cameraLayoutController = new CameraLayoutController();
         socketController = new SocketController();
         socketController.openSocket();
     }

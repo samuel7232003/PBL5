@@ -1,6 +1,8 @@
 package com.example.learnengapp.Socket;
 
+import com.example.learnengapp.controller.CameraLayoutController;
 import com.example.learnengapp.controller.ServerDataController;
+import javafx.application.Platform;
 
 import java.io.*;
 import java.net.Socket;
@@ -92,6 +94,7 @@ public class DeviceHandler  extends Thread{
                                 }
                             }
                         }
+                        reloadOnSocket();
                     }
                 }
             }
@@ -125,5 +128,14 @@ public class DeviceHandler  extends Thread{
                 deviceHandler.getBufferedWriter().flush();
             }
         }
+    }
+    public void reloadOnSocket(){
+        Platform.runLater(() ->{
+            try {
+                ServerDataController.getCameraLayoutController().reload();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }

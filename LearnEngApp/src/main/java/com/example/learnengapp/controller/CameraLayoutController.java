@@ -142,4 +142,12 @@ public class CameraLayoutController implements Initializable {
         ServerDataController.getData().setStage(stage);
         ServerDataController.getData().getStage().setScene(scene);
     }
+
+    public void reload() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1150, 800);
+//        scene.getStylesheets().add(index.class.getResource("home.css").toExternalForm());
+        Stage stage1 = ServerDataController.getData().getStage();
+        stage1.setScene(scene);
+    }
 }
