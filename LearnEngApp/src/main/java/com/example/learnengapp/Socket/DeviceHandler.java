@@ -126,7 +126,7 @@ public class DeviceHandler  extends Thread{
             throw new RuntimeException(e);
         }
     }
-    public void stopDetect() throws IOException {
+    public static void stopDetect() throws IOException {
         for(DeviceHandler deviceHandler : SocketController.getDevices()){
             if(deviceHandler.nameDevice == "CAM"){
                 deviceHandler.getBufferedWriter().write("STOP");

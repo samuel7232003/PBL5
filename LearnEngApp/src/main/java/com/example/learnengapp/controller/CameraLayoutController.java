@@ -1,5 +1,6 @@
 package com.example.learnengapp.controller;
 
+import com.example.learnengapp.Socket.DeviceHandler;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.Vocab;
 import javafx.event.EventHandler;
@@ -144,6 +145,7 @@ public class CameraLayoutController implements Initializable {
     }
 
     public void loadDictionaryView(Stage stage)throws IOException {
+        DeviceHandler.stopDetect();
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         ServerDataController.getData().setStage(stage);
