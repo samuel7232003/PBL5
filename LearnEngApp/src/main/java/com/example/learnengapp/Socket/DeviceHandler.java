@@ -84,6 +84,7 @@ public class DeviceHandler  extends Thread{
                         // sắp xếp mảng theo giá trị tăng dần các id
                         idWordList.sort((o1, o2) -> o1 - o2);
                         // gửi id của từ vựng về cho camera và sound
+                        ServerDataController.setVocabToShow(idWordList);
                         for (DeviceHandler deviceHandler :  SocketController.getDevices()){
                             if(deviceHandler.nameDevice == "CAM"){
                                 for(int id : idWordList){

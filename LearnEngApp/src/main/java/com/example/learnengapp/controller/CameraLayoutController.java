@@ -91,7 +91,7 @@ public class CameraLayoutController implements Initializable {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         // Đường dẫn của file âm thanh trong thư mục resources
-                        String audioPath = "/com/example/learnengapp/audio/nhac.mp3";
+                        String audioPath = "/com/example/learnengapp/audio/" + transformIdVocab(ServerDataController.getData().getVocab().getIdVocab()) + ".mp3";
 
                         // Lấy URL tuyệt đối của file âm thanh
                         URL url = getClass().getResource(audioPath);
@@ -145,9 +145,17 @@ public class CameraLayoutController implements Initializable {
 
     public void reload() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1150, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
 //        scene.getStylesheets().add(index.class.getResource("home.css").toExternalForm());
         Stage stage1 = ServerDataController.getData().getStage();
         stage1.setScene(scene);
+    }
+
+    public static String transformIdVocab(String input) {
+        if (input.startsWith("vcb") && input.length() > 3) {
+            return input.substring(3);
+        }
+        // Trả về chuỗi gốc nếu không phù hợp với định dạng "vcbxxx"
+        return input;
     }
 }

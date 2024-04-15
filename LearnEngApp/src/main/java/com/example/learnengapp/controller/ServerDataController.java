@@ -4,6 +4,7 @@ import com.example.learnengapp.Socket.SocketController;
 import com.example.learnengapp.model.ServerData;
 import com.example.learnengapp.model.Vocab;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ServerDataController {
@@ -45,7 +46,7 @@ public class ServerDataController {
         }
         return null;
     }
-    public void setVocabToShow(ArrayList<Integer> idword){
+    public static void setVocabToShow(ArrayList<Integer> idword) throws IOException {
         // chuyển mảng từ kiêu số int sang kiểu string là các id chính thức: vcb001
         ArrayList<String> idWordList = new ArrayList<>();
         for(int id : idword){
@@ -59,11 +60,12 @@ public class ServerDataController {
         int n = 0;
         for(Vocab vocab : data.getFullVocab()){
             if(vocab.getIdVocab().equals(idWordList.get(n))){
-                this.vocabToShow.add(vocab);
+                vocabToShow.add(vocab);
                 n++;
             }
             if(n == idWordList.size()) break;
         }
+        getCameraLayoutController().reload();
     }
 
     public static ArrayList<Vocab> getVocabToShow() {
