@@ -44,6 +44,7 @@ public class CameraLayoutController implements Initializable {
         listVocab.setStyle("-fx-spacing: 20");
         Insets marginInsets = new Insets(10, 0, 0, 0); // top, right, bottom, left
         HBox.setMargin(listVocab, marginInsets);
+
         if(ServerDataController.getVocabToShow() != null){
             for (Vocab vocab : ServerDataController.getVocabToShow()){
 //                for (Vocab vocab : ServerDataController.getData().getFullVocab()){
@@ -99,7 +100,8 @@ public class CameraLayoutController implements Initializable {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         // Đường dẫn của file âm thanh trong thư mục resources
-                        String audioPath = "/com/example/learnengapp/audio/" + transformIdVocab(ServerDataController.getData().getVocab().getIdVocab()) + ".mp3";
+                        String audioPath = "/com/example/learnengapp/audio/" + transformIdVocab(vocab.getIdVocab()) + ".mp3";
+                        System.out.println(transformIdVocab(vocab.getIdVocab()));
 
                         // Lấy URL tuyệt đối của file âm thanh
                         URL url = getClass().getResource(audioPath);
