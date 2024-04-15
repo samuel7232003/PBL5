@@ -101,7 +101,6 @@ public class CameraLayoutController implements Initializable {
                     public void handle(MouseEvent mouseEvent) {
                         // Đường dẫn của file âm thanh trong thư mục resources
                         String audioPath = "/com/example/learnengapp/audio/" + transformIdVocab(vocab.getIdVocab()) + ".mp3";
-                        System.out.println(transformIdVocab(vocab.getIdVocab()));
 
                         // Lấy URL tuyệt đối của file âm thanh
                         URL url = getClass().getResource(audioPath);
@@ -166,7 +165,6 @@ public class CameraLayoutController implements Initializable {
         if (input.startsWith("vcb") && input.length() > 3) {
             return input.substring(3);
         }
-        // Trả về chuỗi gốc nếu không phù hợp với định dạng "vcbxxx"
         return input;
     }
 }
