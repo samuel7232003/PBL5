@@ -5,7 +5,6 @@ public class Vocab {
     private String word;
     private String mean;
     private String phonetic;
-    private String image;
     private String example;
 
     public String getIdVocab() {
@@ -40,14 +39,6 @@ public class Vocab {
         this.phonetic = phonetic;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getExample() {
         return example;
     }
@@ -56,12 +47,11 @@ public class Vocab {
         this.example = example;
     }
 
-    public Vocab(String idVocab, String word, String mean, String phonetic,String example, String image) {
+    public Vocab(String idVocab, String word, String mean, String phonetic,String example) {
         this.idVocab = idVocab;
         this.word = word;
         this.mean = mean;
         this.phonetic = phonetic;
-        this.image = image;
         this.example = example;
     }
 
@@ -71,6 +61,5 @@ public class Vocab {
         this.mean = vocab.getMean();
         this.phonetic = vocab.getPhonetic();
         this.example = vocab.getExample();
-        this.image = vocab.getImage();
     }
 }

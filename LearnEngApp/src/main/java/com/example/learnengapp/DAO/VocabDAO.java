@@ -24,8 +24,7 @@ public class VocabDAO extends connectMySQL{
                 String mean = resultSet.getString("mean");
                 String phonetic = resultSet.getString("phonetic");
                 String example = resultSet.getString("example");
-                String image = resultSet.getString("image");
-                Vocab vocab = new Vocab(idVocab, word, mean, phonetic, example, image);
+                Vocab vocab = new Vocab(idVocab, word, mean, phonetic, example);
                 vocabs.add(vocab);
             }
         } catch (SQLException e) {
@@ -48,9 +47,8 @@ public class VocabDAO extends connectMySQL{
                 mean = resulutSet.getString("mean");
                 phonetic = resulutSet.getString("phonetic");
                 example = resulutSet.getString("example");
-                image = resulutSet.getString("image");
             }
-            vocab = new Vocab(id, word, mean, phonetic, example, image);
+            vocab = new Vocab(id, word, mean, phonetic, example);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -71,9 +69,8 @@ public class VocabDAO extends connectMySQL{
                 mean = resulutSet.getString("mean");
                 phonetic = resulutSet.getString("phonetic");
                 example = resulutSet.getString("example");
-                image = resulutSet.getString("image");
             }
-            vocab = new Vocab(id, wordd, mean, phonetic, example, image);
+            vocab = new Vocab(id, wordd, mean, phonetic, example);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

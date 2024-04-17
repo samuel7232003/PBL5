@@ -43,6 +43,10 @@ public class WordLayoutController implements Initializable {
     private Pane saveVocab;
     @FXML
     private Pane unsaveVocab;
+    @FXML
+    private ImageView myNotebookLayout;
+    @FXML
+    private ImageView myDictionaryLayout;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +73,7 @@ public class WordLayoutController implements Initializable {
         phoneticVocab.setText(ServerDataController.getData().getVocab().getPhonetic());
         exampleVocab.setText(ServerDataController.getData().getVocab().getExample());
 
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/learnengapp/image/" + ServerDataController.getData().getVocab().getImage())));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/learnengapp/image/" + ServerDataController.getData().getVocab().getIdVocab() + ".jpg")));
         imageVocab.setImage(image);
 
         backToMain.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -117,18 +121,46 @@ public class WordLayoutController implements Initializable {
         cameraImageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
-                Scene scene = null;
                 try {
-                    scene = new Scene(fxmlLoader.load(), 700, 500);
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadCameraView(stage);
+                    loadView(stage, "cameraLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                ServerDataController.getData().setStage(stage);
-                ServerDataController.getData().getStage().setScene(scene);
+            }
+        });
+
+        myNotebookLayout.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadCameraView(stage);
+                    loadView(stage, "myNotebookLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        myDictionaryLayout.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadCameraView(stage);
+                    loadView(stage, "myDictionary.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
-
+    public void loadView(Stage stage, String viewURL) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource(viewURL));
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
+    }
 }
