@@ -27,6 +27,25 @@ public class UserDAO extends connectMySQL{
         return users;
     }
 
+    public static ArrayList<String> getFullIdVocabByIdUser(String idUser){
+        ArrayList<String> listIdVocab = new ArrayList<String>();
+        Connection conn = connectSQL();
+        try {
+            var sql = "select * FROM uservocabulary WHERE user_id = '" + idUser + "'";
+            var statement = conn.prepareStatement(sql);
+            var resultSet = statement.executeQuery();
+            String idVocab;
+
+            while(resultSet.next()){
+                idVocab = resultSet.getString("vocabulary_id");
+                listIdVocab.add(idVocab);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listIdVocab;
+    }
+
     public static User getUser(String idUser){
         User user;
         try{

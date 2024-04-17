@@ -5,8 +5,10 @@ import com.example.learnengapp.model.Vocab;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class VocabDAO extends connectMySQL{
     public static ArrayList<Vocab> getVocab(){
@@ -76,5 +78,44 @@ public class VocabDAO extends connectMySQL{
             throw new RuntimeException(e);
         }
         return vocab;
+    }
+
+    public static void setVocabForUser(String idUser, String idVocab){
+        try{
+            Connection conn = connectSQL();
+            var sql = "INSERT INTO `uservocabulary`(`user_id`, `vocabulary_id`) VALUES ('" + idUser + "','" + idVocab + "')";
+            Statement statement = conn.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void deleteVocabForUser(String idUser, String idVocab){
+        try{
+            Connection conn = connectSQL();
+            var sql = "DELETE FROM `uservocabulary` WHERE vocabulary_id = '" + idVocab + "' AND user_id = '" + idUser + "'";
+            Statement statement = conn.createStatement();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean checkIdVocabFromIdUser(String idUser, String idVocab){
+        String result;
+        try{
+            Connection conn = connectSQL();
+            var sql = "select vocabulary_id FROM uservocabulary WHERE user_id = '" + idUser + "'";
+            var statement = conn.prepareStatement(sql);
+            var resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                result = resultSet.getString("vocabulary_id");
+                if (Objects.equals(result, idVocab)) return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

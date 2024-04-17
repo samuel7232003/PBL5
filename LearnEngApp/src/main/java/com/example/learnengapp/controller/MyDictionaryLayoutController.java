@@ -35,6 +35,8 @@ public class MyDictionaryLayoutController  implements Initializable {
     private ImageView cameraImageView;
     @FXML
     private TextField findWord;
+    @FXML
+    private ImageView myNotebookView;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -88,7 +90,8 @@ public class MyDictionaryLayoutController  implements Initializable {
                 try {
                     ServerDataController.getData().setVocab(vocab);
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                    loadDetailsView(stage);
+//                    loadDetailsView(stage);
+                    loadView(stage, "wordLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -100,7 +103,21 @@ public class MyDictionaryLayoutController  implements Initializable {
             public void handle(MouseEvent mouseEvent) {
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                    loadCameraView(stage);
+//                    loadCameraView(stage);
+                    loadView(stage, "cameraLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        myNotebookView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadMyNotebookView(stage);
+                    loadView(stage, "myNotebookLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -111,9 +128,9 @@ public class MyDictionaryLayoutController  implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 String keyword = stringProcess(findWord.getText());
-                System.out.println(keyword);
+//                System.out.println(keyword);
                 Vocab vocab = ServerDataController.searchVocab(keyword);
-                System.out.println(vocab.getMean());
+//                System.out.println(vocab.getMean());
 
                 if(Objects.equals(findWord.getText(), "")){
                     Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -129,46 +146,6 @@ public class MyDictionaryLayoutController  implements Initializable {
 
                 }
                 if(Objects.equals(vocab.getWord(), keyword)){
-//                    Pane pane = new Pane();
-//                    pane.setId(vocab.getIdVocab());
-//                    pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
-//
-//                    pane.setPrefHeight(90);
-//                    pane.setPrefWidth(160);
-//                    pane.setMinSize(160, 90);
-//                    pane.setMaxSize(160, 90);
-//
-//                    Label word = new Label(vocab.getWord());
-//                    pane.getChildren().add(word);
-//                    word.setLayoutX(13);
-//                    word.setLayoutY(11);
-//                    word.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
-//
-//                    Label mean = new Label(vocab.getMean());
-//                    pane.getChildren().add(mean);
-//                    mean.setLayoutX(13);
-//                    mean.setLayoutY(60);
-//                    mean.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
-//
-//                    Label phonetic = new Label(vocab.getPhonetic());
-//                    pane.getChildren().add(phonetic);
-//                    phonetic.setLayoutX(13);
-//                    phonetic.setLayoutY(40);
-//                    phonetic.setStyle("-fx-font-size: 14;");
-//
-//                    listVocablib.getChildren().clear();
-//                    listVocablib.add(pane, 0, 0);
-//
-//                    pane.setOnMouseClicked(mouseEvent -> {
-//                        try {
-//                            data.setVocab(vocab);
-//                            Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-//                            loadDetailsView(stage);
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    });
-
                     ServerDataController.getData().setVocab(vocab);
                     Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                     FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
@@ -189,15 +166,9 @@ public class MyDictionaryLayoutController  implements Initializable {
             }
         });
     }
-    public void loadDetailsView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        ServerDataController.getData().setStage(stage);
-        ServerDataController.getData().getStage().setScene(scene);
-    }
 
-    public void loadCameraView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
+    public void loadView(Stage stage, String viewURL) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource(viewURL));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         ServerDataController.getData().setStage(stage);
         ServerDataController.getData().getStage().setScene(scene);
@@ -208,7 +179,6 @@ public class MyDictionaryLayoutController  implements Initializable {
             return str;
         }
 
-        // Xóa khoảng trắng ở cả hai đầu
         str = str.trim();
 
         char firstChar = Character.toUpperCase(str.charAt(0));
