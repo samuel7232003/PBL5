@@ -17,6 +17,8 @@ public class DeviceHandler  extends Thread{
     private Socket deviceSocket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
+    private static boolean checkReload = true;
+//    private static String continuee = "continue";
     Scanner sc;
 
     public BufferedWriter getBufferedWriter() {
@@ -69,36 +71,46 @@ public class DeviceHandler  extends Thread{
                 if (header == null) throw new IOException();
                 switch (header){
                     case "RESULT":{
-                        String result = this.bufferedReader.readLine();
-                        System.out.println("Kết quả được gửi về: " + result);
-                        String[] kqList = result.split(";");
-                        if(kqList.length !=0 ){
-                            ArrayList<Integer> idWordList = new ArrayList<>();
-                            // lấy id của các kết quả
-                            for(String kq: kqList){
-                                String idkq = String.valueOf(ServerDataController.getData().getFullVocabDic().get(kq));
-                                if(idkq != "null"){
-                                    int id = Integer.parseInt(idkq);
-                                    idWordList.add(id);
-                                }
-                            }
-                            // sắp xếp mảng theo giá trị tăng dần các id
-                            idWordList.sort((o1, o2) -> o1 - o2);
-                            // gửi id của từ vựng về cho camera và sound
-                            ServerDataController.setVocabToShow(idWordList);
-                            for (DeviceHandler deviceHandler :  SocketController.getDevices()){
-                                if(deviceHandler.nameDevice == "CAM"){
-                                    for(int id : idWordList){
-                                        System.out.println(id);
-                                        deviceHandler.getBufferedWriter().newLine();
-                                        deviceHandler.getBufferedWriter().write("" + id);
-                                        deviceHandler.getBufferedWriter().flush();
+                        if(checkReload == true){
+                            String result = this.bufferedReader.readLine();
+                            System.out.println("Kết quả được gửi về: " + result);
+                            String[] kqList = result.split(";");
+                            if(kqList.length !=0 ) {
+                                ArrayList<Integer> idWordList = new ArrayList<>();
+                                // lấy id của các kết quả
+                                for (String kq : kqList) {
+                                    String idkq = String.valueOf(ServerDataController.getData().getFullVocabDic().get(kq));
+                                    if (idkq != "null") {
+                                        int id = Integer.parseInt(idkq);
+                                        idWordList.add(id);
                                     }
                                 }
-                            }
-                            reloadOnSocket();
-                        }
 
+
+
+                                if(idWordList.size()!=0){
+                                    // sắp xếp mảng theo giá trị tăng dần các id
+                                    idWordList.sort((o1, o2) -> o1 - o2);
+                                    // gửi id của từ vựng về cho camera và sound
+                                    ServerDataController.setVocabToShow(idWordList);
+                                    for (DeviceHandler deviceHandler : SocketController.getDevices()) {
+                                        if (deviceHandler.nameDevice == "CAM") {
+                                            for (int id : idWordList) {
+                                                System.out.println(id);
+                                                deviceHandler.getBufferedWriter().newLine();
+                                                deviceHandler.getBufferedWriter().write("" + id);
+                                                deviceHandler.getBufferedWriter().flush();
+                                            }
+//                                } else if (deviceHandler.nameDevice == "MODEL") {
+//                                    deviceHandler.getBufferedWriter().write(continuee);
+//                                    deviceHandler.getBufferedWriter().flush();
+                                        }
+                                    }
+                                    reloadOnSocket();
+                                }
+
+                            }
+                        }
                     }
                 }
             }
@@ -126,13 +138,24 @@ public class DeviceHandler  extends Thread{
             throw new RuntimeException(e);
         }
     }
-    public static void stopDetect() throws IOException {
-        for(DeviceHandler deviceHandler : SocketController.getDevices()){
-            if(deviceHandler.nameDevice == "CAM"){
-                deviceHandler.getBufferedWriter().write("STOP");
-                deviceHandler.getBufferedWriter().flush();
-            }
-        }
+    public static void stopDetect(){
+//        System.out.println("alo alo");
+        checkReload = false;
+////        continuee = "STOP";
+//        try {
+//            for(DeviceHandler deviceHandler : SocketController.getDevices()){
+//                if(deviceHandler.nameDevice == "MODEL"){
+////                    deviceHandler.deviceSocket.close();
+//                    deviceHandler.getBufferedWriter().write("STOP");
+//                    deviceHandler.getBufferedWriter().flush();
+//                }
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+    }
+    public static void continueDetect(){
+        checkReload = true;
     }
     public void reloadOnSocket(){
         Platform.runLater(() ->{
