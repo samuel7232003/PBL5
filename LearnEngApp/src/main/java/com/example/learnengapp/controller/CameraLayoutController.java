@@ -34,13 +34,15 @@ public class CameraLayoutController implements Initializable {
     private ImageView btnDictionary;
     @FXML
     private ImageView cameraImageView;
+    @FXML
+    private ImageView btnMyNotebook;
 
     private ArrayList<Vocab> vocabArrayList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        vocabArrayList = new ArrayList<Vocab>();
 //        vocabArrayList = ServerDataController.getData().getFullVocab();
-        test.setText("Hello " + ServerDataController.getData().getUser().getUsername());
+        test.setText("Hi, " + ServerDataController.getData().getUser().getUsername() + "!");
         listVocab.setStyle("-fx-spacing: 20");
         Insets marginInsets = new Insets(10, 0, 0, 0); // top, right, bottom, left
         HBox.setMargin(listVocab, marginInsets);
@@ -90,7 +92,8 @@ public class CameraLayoutController implements Initializable {
                     try {
                         ServerDataController.getData().setVocab(vocab);
                         Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                        loadDetailsView(stage);
+//                        loadDetailsView(stage);
+                        loadView(stage, "wordLayout.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -101,7 +104,6 @@ public class CameraLayoutController implements Initializable {
                     public void handle(MouseEvent mouseEvent) {
                         // Đường dẫn của file âm thanh trong thư mục resources
                         String audioPath = "/com/example/learnengapp/audio/" + transformIdVocab(vocab.getIdVocab()) + ".mp3";
-                        System.out.println(transformIdVocab(vocab.getIdVocab()));
 
                         // Lấy URL tuyệt đối của file âm thanh
                         URL url = getClass().getResource(audioPath);
@@ -131,7 +133,21 @@ public class CameraLayoutController implements Initializable {
             public void handle(MouseEvent mouseEvent) {
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                    loadDictionaryView(stage);
+//                    loadDictionaryView(stage);
+                    loadView(stage, "myDictionaryLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        btnMyNotebook.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadMyNotebookView(stage);
+                    loadView(stage, "myNotebookLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -139,16 +155,8 @@ public class CameraLayoutController implements Initializable {
         });
     }
 
-    public void loadDetailsView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("wordLayout.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
-        ServerDataController.getData().setStage(stage);
-        ServerDataController.getData().getStage().setScene(scene);
-    }
-
-    public void loadDictionaryView(Stage stage)throws IOException {
-        DeviceHandler.stopDetect();
-        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
+    public void loadView(Stage stage, String viewURL) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource(viewURL));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         ServerDataController.getData().setStage(stage);
         ServerDataController.getData().getStage().setScene(scene);
@@ -166,7 +174,6 @@ public class CameraLayoutController implements Initializable {
         if (input.startsWith("vcb") && input.length() > 3) {
             return input.substring(3);
         }
-        // Trả về chuỗi gốc nếu không phù hợp với định dạng "vcbxxx"
         return input;
     }
 }

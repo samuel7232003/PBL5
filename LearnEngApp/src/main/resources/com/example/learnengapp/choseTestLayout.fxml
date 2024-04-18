@@ -45,7 +45,7 @@
                         <Font size="35.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
+                  <Pane fx:id="choose10words" layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -68,7 +68,7 @@
                              <Font size="35.0" />
                          </font>
                      </Label>
-                     <Pane layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
+                     <Pane fx:id="choose15words" layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
                          <children>
                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -91,7 +91,7 @@
                              <Font size="35.0" />
                          </font>
                      </Label>
-                     <Pane layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
+                     <Pane fx:id="choose20words" layoutX="21.0" layoutY="218.0" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: ffffff; -fx-background-radius: 5;">
                          <children>
                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -30,7 +30,7 @@
                    <image>
                        <Image url="@icon/Test.png" />
                    </image></ImageView>
-               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="myNotebookView" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@icon/User_cicrle_light.png" />
                    </image>

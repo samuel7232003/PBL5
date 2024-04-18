@@ -16,7 +16,7 @@
                   <Image url="@icon/Camera_light.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="myDictionaryLayout" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/notebook_light.png" />
                </image>
@@ -25,7 +25,7 @@
                <image>
                   <Image url="@icon/Test.png" />
                </image></ImageView>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="myNotebookLayout" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/User_cicrle_light.png" />
                </image>
@@ -38,17 +38,6 @@
       </Label>
       <Pane layoutX="89.0" layoutY="65.0" prefHeight="399.0" prefWidth="589.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: ffffff;">
          <children>
-      
-            <Pane layoutX="630.0" prefHeight="31.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 11;">
-               <children>
-                  <Label layoutX="40.0" layoutY="6.0" style="-fx-font-weight: bold;" text="Đã lưu từ" />
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icon/Saved.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
             <Pane layoutX="20.0" layoutY="20.0" prefHeight="90.0" prefWidth="246.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 8;">
                <children>
                   <Label fx:id="wordVocab" layoutX="14.0" layoutY="7.0" prefHeight="31.0" prefWidth="66.0" style="-fx-font-weight: bold;" text="Apple">
@@ -68,16 +57,6 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="449.0" layoutY="20.0" prefHeight="31.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 11;">
-               <children>
-                  <Label layoutX="40.0" layoutY="6.0" style="-fx-font-weight: bold;" text="Lưu từ này" />
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icon/Save.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
 
             <Label layoutX="20.0" layoutY="134.0" style="-fx-font-weight: bold;" text="Cách dùng">
                <font>
@@ -88,32 +67,42 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label  layoutX="20.0" layoutY="190.0" style="-fx-font-weight: bold;" text="Hình ảnh minh họa">
+            <Label layoutX="20.0" layoutY="190.0" style="-fx-font-weight: bold;" text="Hình ảnh minh họa">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <ImageView fx:id="imageVocab" fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image fx:id="" url="@image/apple.jpg" />
+                  <Image fx:id="" url="@image/vcb010.jpg" />
                </image>
             </ImageView>
-      
-                  <Pane layoutX="630.0" layoutY="50.0" prefHeight="31.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 11; -fx-background-color: FAA2A2; -fx-background-radius: 11;">
-               <children>
-                  <Label layoutX="40.0" layoutY="6.0" style="-fx-font-weight: bold;" text="Lưu từ này" />
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icon/cancelSave.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
          </children></Pane>
       <ImageView fx:id="backToMain" fitHeight="40.0" fitWidth="40.0" layoutX="638.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icon/Back.png" />
          </image>
       </ImageView>
+
+      <Pane fx:id="unsaveVocab" layoutX="750.0" layoutY="80.0" prefHeight="31.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 11; -fx-background-color: FAA2A2; -fx-background-radius: 11;">
+         <children>
+            <Label layoutX="40.0" layoutY="6.0" style="-fx-font-weight: bold;" text="Bỏ lưu từ" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/cancelSave.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="saveVocab" layoutX="520.0" layoutY="80.0" prefHeight="31.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 11;">
+         <children>
+            <Label layoutX="40.0" layoutY="6.0" style="-fx-font-weight: bold;" text="Lưu từ này" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/Save.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>

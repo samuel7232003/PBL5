@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class User {
     private String idUser;
     private String username;
-    private ArrayList<Vocab> listVocab;
+    private ArrayList<String> listIdVocab;
 
     public String getIdUser() {
         return idUser;
@@ -23,12 +23,12 @@ public class User {
         this.username = username;
     }
 
-    public ArrayList<Vocab> getListVocab() {
-        return listVocab;
+    public ArrayList<String> getListIdVocab() {
+        return listIdVocab;
     }
 
-    public void setListVocab(ArrayList<Vocab> listVocab) {
-        this.listVocab = listVocab;
+    public void setListIdVocab(ArrayList<String> listIdVocab) {
+        this.listIdVocab = listIdVocab;
     }
 
     public User(String idUser, String username) {
@@ -36,15 +36,15 @@ public class User {
         this.username = username;
     }
 
-    public User(String idUser, String username, ArrayList<Vocab> listVocab) {
+    public User(String idUser, String username, ArrayList<String> listVocab) {
         this.idUser = idUser;
         this.username = username;
-        this.listVocab = listVocab;
+        this.listIdVocab = listVocab;
     }
 
     public User(User user){
         this.idUser = user.getIdUser();
         this.username = user.getUsername();
-        this.listVocab = user.getListVocab();
+        this.listIdVocab = user.getListIdVocab();
     }
 }
