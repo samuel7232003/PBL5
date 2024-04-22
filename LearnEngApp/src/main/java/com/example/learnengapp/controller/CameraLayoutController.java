@@ -94,7 +94,6 @@ public class CameraLayoutController implements Initializable {
                         DeviceHandler.stopDetect();
                         ServerDataController.getData().setVocab(vocab);
                         Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-//                        loadDetailsView(stage);
                         loadView(stage, "wordLayout.fxml");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
