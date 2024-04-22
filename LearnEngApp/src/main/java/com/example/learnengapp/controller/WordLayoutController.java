@@ -50,7 +50,6 @@ public class WordLayoutController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        System.out.println(ServerDataController.getData().getUser().getUsername());
         String userID = ServerDataController.getData().getUser().getIdUser();
         String vocabID = ServerDataController.getData().getVocab().getIdVocab();
 

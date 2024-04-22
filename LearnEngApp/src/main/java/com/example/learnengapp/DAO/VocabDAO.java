@@ -40,7 +40,7 @@ public class VocabDAO extends connectMySQL{
             var sql = "select * FROM vocab WHERE idVocab =  '" + idVocab + "'";
             var statement = conn.prepareStatement(sql);
             var resulutSet = statement.executeQuery();
-            String id = "", word = "", mean = "", phonetic = "", example = "", image = "";
+            String id = "", word = "", mean = "", phonetic = "", example = "";
             while (resulutSet.next()){
                 id = resulutSet.getString("idVocab");
                 word = resulutSet.getString("word");
@@ -62,7 +62,7 @@ public class VocabDAO extends connectMySQL{
             var sql = "select * FROM vocab WHERE word =  '" + word + "'";
             var statement = conn.prepareStatement(sql);
             var resulutSet = statement.executeQuery();
-            String id = "", wordd = "", mean = "", phonetic = "", example = "", image = "";
+            String id = "", wordd = "", mean = "", phonetic = "", example = "";
             while (resulutSet.next()){
                 id = resulutSet.getString("idVocab");
                 wordd = resulutSet.getString("word");
@@ -108,7 +108,8 @@ public class VocabDAO extends connectMySQL{
             var resultSet = statement.executeQuery();
             while (resultSet.next()){
                 result = resultSet.getString("vocabulary_id");
-                if (Objects.equals(result, idVocab)) return true;
+                if (Objects.equals(result, idVocab))
+                    return true;
             }
             return false;
         } catch (SQLException e) {
