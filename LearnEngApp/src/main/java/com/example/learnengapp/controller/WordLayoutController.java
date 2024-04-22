@@ -1,5 +1,6 @@
 package com.example.learnengapp.controller;
 
+import com.example.learnengapp.Socket.DeviceHandler;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.ServerData;
 import javafx.event.EventHandler;
@@ -79,6 +80,7 @@ public class WordLayoutController implements Initializable {
         backToMain.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.continueDetect();
                 Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
                 Scene scene = null;

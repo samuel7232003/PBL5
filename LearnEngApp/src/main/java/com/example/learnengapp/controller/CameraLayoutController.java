@@ -1,6 +1,7 @@
 package com.example.learnengapp.controller;
 
 import com.example.learnengapp.Socket.DeviceHandler;
+import com.example.learnengapp.Socket.SocketController;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.Vocab;
 import javafx.event.EventHandler;
@@ -90,6 +91,7 @@ public class CameraLayoutController implements Initializable {
 
                 pane.setOnMouseClicked(mouseEvent -> {
                     try {
+                        DeviceHandler.stopDetect();
                         ServerDataController.getData().setVocab(vocab);
                         Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                        loadDetailsView(stage);
@@ -133,6 +135,7 @@ public class CameraLayoutController implements Initializable {
             public void handle(MouseEvent mouseEvent) {
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+                    DeviceHandler.stopDetect();
 //                    loadDictionaryView(stage);
                     loadView(stage, "myDictionaryLayout.fxml");
                 } catch (IOException e) {

@@ -1,5 +1,6 @@
 package com.example.learnengapp.controller;
 
+import com.example.learnengapp.Socket.DeviceHandler;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.ServerData;
 import com.example.learnengapp.model.Vocab;
@@ -102,6 +103,7 @@ public class MyDictionaryLayoutController  implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
+                    DeviceHandler.continueDetect();
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
                     loadView(stage, "cameraLayout.fxml");
