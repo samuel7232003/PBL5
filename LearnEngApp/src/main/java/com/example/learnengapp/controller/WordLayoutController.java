@@ -22,6 +22,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.example.learnengapp.DAO.VocabDAO.*;
+import static com.example.learnengapp.controller.ServerDataController.getSavePage;
 
 
 public class WordLayoutController implements Initializable {
@@ -81,8 +82,18 @@ public class WordLayoutController implements Initializable {
             public void handle(MouseEvent mouseEvent) {
                 DeviceHandler.continueDetect();
                 Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
-                Scene scene = null;
+
+                int homeBack = getSavePage();
+                FXMLLoader fxmlLoader;
+                if(homeBack == 1){
+                    DeviceHandler.continueDetect();
+                    fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
+                } else if (homeBack == 2) {
+                    fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
+                }else
+                    fxmlLoader = new FXMLLoader(index.class.getResource("myNotebookLayout.fxml"));
+
+                Scene scene;
                 try {
                     scene = new Scene(fxmlLoader.load(), 700, 500);
                 } catch (IOException e) {

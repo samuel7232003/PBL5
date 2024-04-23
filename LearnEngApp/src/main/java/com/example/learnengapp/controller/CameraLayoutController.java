@@ -29,6 +29,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.example.learnengapp.controller.ServerDataController.setSavePage;
+
 public class CameraLayoutController implements Initializable {
     @FXML
     public HBox listVocab;
@@ -105,6 +108,7 @@ public class CameraLayoutController implements Initializable {
                         ServerDataController.getData().setVocab(vocab);
                         Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                         loadView(stage, "wordLayout.fxml");
+                        setSavePage(1);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

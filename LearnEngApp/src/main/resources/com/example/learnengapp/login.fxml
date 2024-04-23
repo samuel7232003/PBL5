@@ -7,21 +7,24 @@
 
 <Pane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.LoginController">
    <children>
+      <TextField fx:id="tf_focus" layoutX="722.0" layoutY="30.0" />
       <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@background.png" />
          </image>
       </ImageView>
-      <Pane layoutX="230.0" layoutY="88.0" prefHeight="325.0" prefWidth="240.0" style="-fx-background-color: ffffff; -fx-border-color: black; -fx-border-radius: 8; -fx-opacity: 0.8" />
-      <TextField fx:id="tf_username" layoutX="255.0" layoutY="210.0" prefHeight="46.0" prefWidth="191.0" promptText="Nhập tên của bạn ..." style="-fx-font-weight: bold;">
+      <Pane layoutX="190.0" layoutY="88.0" prefHeight="325.0" prefWidth="280.0" style="-fx-background-color: ffffff; -fx-border-color: black; -fx-border-radius: 8; -fx-opacity: 0.8">
+         <children>
+            <Label alignment="CENTER" layoutX="75.0" layoutY="209.0" onMouseClicked="#login" prefHeight="46.0" prefWidth="131.0" style="-fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color: d8d8d8; -fx-background-radius: 8;" text="Bắt đầu" textFill="#7b7b7b">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <TextField fx:id="tf_username" layoutX="207.0" layoutY="210.0" prefHeight="46.0" prefWidth="239.0" promptText="Nhập tên của bạn ..." style="-fx-font-weight: bold;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label alignment="CENTER" onMouseClicked="#login" layoutX="297.0" layoutY="308.0" prefHeight="38.0" prefWidth="104.0" style="-fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color: d8d8d8; -fx-background-radius: 8;" text="Bắt đầu" textFill="#7b7b7b">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
    </children>
 </Pane>

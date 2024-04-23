@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.example.learnengapp.controller.ServerDataController.setSavePage;
+
 public class MyDictionaryLayoutController  implements Initializable {
     @FXML
     public GridPane listVocablib;
@@ -93,6 +95,7 @@ public class MyDictionaryLayoutController  implements Initializable {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadDetailsView(stage);
                     loadView(stage, "wordLayout.fxml");
+                    setSavePage(2);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

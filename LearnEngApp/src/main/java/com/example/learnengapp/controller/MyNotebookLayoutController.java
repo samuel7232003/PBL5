@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 import static com.example.learnengapp.DAO.UserDAO.getFullIdVocabByIdUser;
 import static com.example.learnengapp.DAO.VocabDAO.getVocabById;
+import static com.example.learnengapp.controller.ServerDataController.setSavePage;
 
 public class MyNotebookLayoutController implements Initializable {
     @FXML
@@ -97,6 +98,7 @@ public class MyNotebookLayoutController implements Initializable {
                     ServerDataController.getData().setVocab(vocab);
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                     loadView(stage, "wordLayout.fxml");
+                    setSavePage(3);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
