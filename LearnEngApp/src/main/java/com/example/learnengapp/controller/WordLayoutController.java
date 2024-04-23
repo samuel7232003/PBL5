@@ -154,7 +154,7 @@ public class WordLayoutController implements Initializable {
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
-                    loadView(stage, "myDictionary.fxml");
+                    loadView(stage, "myDictionaryLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
