@@ -1,5 +1,6 @@
 package com.example.learnengapp.controller;
 
+import com.example.learnengapp.Socket.DeviceHandler;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.User;
 import com.example.learnengapp.model.Vocab;
@@ -106,6 +107,7 @@ public class MyNotebookLayoutController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
+                    DeviceHandler.continueDetect();
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                     loadView(stage, "cameraLayout.fxml");
                 } catch (IOException e) {
@@ -118,6 +120,7 @@ public class MyNotebookLayoutController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
+                    DeviceHandler.stopDetect();
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
 //                    Scene scene = new Scene(fxmlLoader.load(), 700, 500);

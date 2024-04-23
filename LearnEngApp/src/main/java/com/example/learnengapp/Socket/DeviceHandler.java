@@ -91,6 +91,7 @@ public class DeviceHandler  extends Thread{
                                 if(idWordList.size()!=0){
                                     // sắp xếp mảng theo giá trị tăng dần các id
                                     idWordList.sort((o1, o2) -> o1 - o2);
+                                    idWordList = removeDuplicate(idWordList);
                                     // gửi id của từ vựng về cho camera và sound
                                     ServerDataController.setVocabToShow(idWordList);
                                     for (DeviceHandler deviceHandler : SocketController.getDevices()) {
@@ -165,5 +166,14 @@ public class DeviceHandler  extends Thread{
                 throw new RuntimeException(e);
             }
         });
+    }
+    public ArrayList<Integer> removeDuplicate(ArrayList<Integer> idWord){
+        ArrayList<Integer> newArrayIdWord = new ArrayList<>();
+        for(int n : idWord){
+            if(!newArrayIdWord.contains(n)){
+                newArrayIdWord.add(n);
+            }
+        }
+        return newArrayIdWord;
     }
 }

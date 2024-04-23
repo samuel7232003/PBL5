@@ -116,6 +116,7 @@ public class MyDictionaryLayoutController  implements Initializable {
         myNotebookView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.stopDetect();
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadMyNotebookView(stage);

@@ -147,6 +147,7 @@ public class CameraLayoutController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
+                    DeviceHandler.stopDetect();
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadMyNotebookView(stage);
                     loadView(stage, "myNotebookLayout.fxml");

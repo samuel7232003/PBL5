@@ -122,6 +122,7 @@ public class WordLayoutController implements Initializable {
         cameraImageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.continueDetect();
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
@@ -135,6 +136,7 @@ public class WordLayoutController implements Initializable {
         myNotebookLayout.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.stopDetect();
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
@@ -148,6 +150,7 @@ public class WordLayoutController implements Initializable {
         myDictionaryLayout.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.stopDetect();
                 try {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
