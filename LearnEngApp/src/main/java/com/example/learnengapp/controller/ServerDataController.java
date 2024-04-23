@@ -13,6 +13,15 @@ public class ServerDataController {
     private static SocketController socketController;
     private static CameraLayoutController cameraLayoutController;
     private static ArrayList<Vocab> vocabToShow;
+    private static int savePage; //lưu chuyển trang
+
+    public static int getSavePage() {
+        return savePage;
+    }
+
+    public static void setSavePage(int savePage) {
+        ServerDataController.savePage = savePage;
+    }
 
     public static ServerData getData() {
         return data;
