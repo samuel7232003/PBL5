@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 
 <Pane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.CameraLayoutController">
    <stylesheets>
@@ -44,7 +45,7 @@
       
       <Pane layoutX="95.0" layoutY="50.0" prefHeight="317.0" prefWidth="582.0" style="-fx-border-color: black; -fx-border-radius: 8;">
          <children>
-            <ImageView preserveRatio="true" />
+            <WebView fx:id="webView" layoutX="51.0" layoutY="10.0" prefHeight="304.0" prefWidth="480.0" />
          </children></Pane>
       <ScrollPane layoutX="14.0" layoutY="380.0" prefHeight="106.0" prefWidth="668.0">
          <content>

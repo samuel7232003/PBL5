@@ -17,8 +17,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +41,9 @@ public class CameraLayoutController implements Initializable {
     @FXML
     private ImageView btnMyNotebook;
 
+    @FXML
+    private WebView webView;
+
     private ArrayList<Vocab> vocabArrayList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,6 +53,10 @@ public class CameraLayoutController implements Initializable {
         listVocab.setStyle("-fx-spacing: 20");
         Insets marginInsets = new Insets(10, 0, 0, 0); // top, right, bottom, left
         HBox.setMargin(listVocab, marginInsets);
+
+        WebEngine engine = webView.getEngine();
+        engine.load("http://192.168.151.130:81/stream");
+
 
         if(ServerDataController.getVocabToShow() != null){
             for (Vocab vocab : ServerDataController.getVocabToShow()){
