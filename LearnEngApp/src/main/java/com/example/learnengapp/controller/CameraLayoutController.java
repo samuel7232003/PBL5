@@ -69,9 +69,9 @@ public class CameraLayoutController implements Initializable {
                 pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
 
                 pane.setPrefHeight(90);
-                pane.setPrefWidth(175);
+                pane.setPrefWidth(210);
                 pane.setMinHeight(90);
-                pane.setMinWidth(175);
+                pane.setMinWidth(210);
 
                 Label word = new Label(vocab.getWord());
                 pane.getChildren().add(word);

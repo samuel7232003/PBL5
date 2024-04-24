@@ -1,6 +1,7 @@
 package com.example.learnengapp.DAO;
 
 import com.example.learnengapp.model.User;
+import com.example.learnengapp.model.Vocab;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -45,6 +46,25 @@ public class UserDAO extends connectMySQL{
         }
         return listIdVocab;
     }
+
+//    public static ArrayList<Vocab> getFullVocabByIdUser(String idUser){
+//        ArrayList<Vocab> listVocab = new ArrayList<>();
+//        Connection conn = connectSQL();
+//        try{
+//            var sql = "select * FROM uservocabulary WHERE user_id = '" + idUser + "'";
+//            var statement = conn.prepareStatement(sql);
+//            var resultSet = statement.executeQuery();
+//
+//            String id_vocab, id_user;
+//
+//            while(resultSet.next()){
+//                id_vocab = resultSet.getString("vocabulary_id");
+//                id_user = resultSet.getString("user_id");
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public static User getUser(String idUser){
         User user;
