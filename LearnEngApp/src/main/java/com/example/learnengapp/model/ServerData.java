@@ -1,5 +1,6 @@
 package com.example.learnengapp.model;
 
+import com.example.learnengapp.DAO.UserDAO;
 import com.example.learnengapp.DAO.VocabDAO;
 import javafx.stage.Stage;
 
@@ -10,6 +11,7 @@ public class ServerData {
     private Stage stage;
     private User user;
     private ArrayList<Vocab> fullVocab;
+    private ArrayList<User> fullUser;
     private Vocab vocab;
     private Hashtable<String, Integer> fullVocabDic;
     public Vocab getVocab() {
@@ -40,6 +42,10 @@ public class ServerData {
         return fullVocab;
     }
 
+    public ArrayList<User> getFullUser(){
+        return fullUser;
+    }
+
     public void setFullVocab(ArrayList<Vocab> fullVocab) {
         this.fullVocab = fullVocab;
     }
@@ -49,6 +55,8 @@ public class ServerData {
         // get data from SQL
         fullVocab = new ArrayList<>();
         fullVocab = VocabDAO.getVocab();
+        fullUser = new ArrayList<>();
+        fullUser = UserDAO.getUser();
         // set data to dictionary
         fullVocabDic = new Hashtable<>();
         setFullVocabDic();

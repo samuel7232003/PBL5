@@ -8,7 +8,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -25,7 +27,10 @@ public class LoginController implements Initializable {
     @FXML
     private TextField tf_username;
     @FXML
+    private Label signUp;
+    @FXML
     private TextField tf_focus;
+    @FXML
     private ServerDataController serverDataController;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,6 +45,22 @@ public class LoginController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+            }
+        });
+
+        signUp.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("signUp.fxml"));
+                Scene scene = null;
+                try {
+                    scene = new Scene(fxmlLoader.load(), 700, 500);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ServerDataController.getData().setStage(stage);
+                ServerDataController.getData().getStage().setScene(scene);
             }
         });
     }

@@ -55,6 +55,11 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="speaker" fitHeight="40.0" fitWidth="40.0" layoutX="281.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/speaker.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
 

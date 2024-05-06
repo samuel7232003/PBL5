@@ -14,6 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -49,7 +51,8 @@ public class WordLayoutController implements Initializable {
     private ImageView myNotebookLayout;
     @FXML
     private ImageView myDictionaryLayout;
-
+    @FXML
+    private ImageView speaker;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String userID = ServerDataController.getData().getUser().getIdUser();
@@ -171,11 +174,45 @@ public class WordLayoutController implements Initializable {
                 }
             }
         });
+
+        speaker.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                // Đường dẫn của file âm thanh trong thư mục resources
+                String audioPath = "/com/example/learnengapp/audio/" + transformIdVocab(vocabID) + ".mp3";
+
+                // Lấy URL tuyệt đối của file âm thanh
+                URL url = getClass().getResource(audioPath);
+
+                if (url != null) {
+                    // Tạo một Media object từ URL
+                    Media sound = new Media(url.toExternalForm());
+
+                    // Tạo một MediaPlayer từ Media object
+                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+                    // Bắt đầu phát âm thanh
+                    mediaPlayer.play();
+                } else {
+                    System.out.println("Không thể tìm thấy file âm thanh.");
+                }
+
+                mouseEvent.consume();
+            }
+        });
     }
+
     public void loadView(Stage stage, String viewURL) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource(viewURL));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         ServerDataController.getData().setStage(stage);
         ServerDataController.getData().getStage().setScene(scene);
+    }
+
+    public static String transformIdVocab(String input) {
+        if (input.startsWith("vcb") && input.length() > 3) {
+            return input.substring(3);
+        }
+        return input;
     }
 }
