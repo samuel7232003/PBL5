@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.SignUpController">
+    <children>
+        <TextField fx:id="tf_focus" layoutX="722.0" layoutY="30.0" />
+        <ImageView fitHeight="579.0" fitWidth="772.0" layoutX="-50.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@background2.jpg" />
+            </image>
+        </ImageView>
+        <Pane layoutX="190.0" layoutY="88.0" prefHeight="325.0" prefWidth="280.0" style="-fx-background-color: ffffff; -fx-border-color: black; -fx-border-radius: 8; -fx-opacity: 0.8">
+            <children>
+                <Label fx:id="lb_login" layoutX="32.0" layoutY="293.0" style="-fx-font-weight: bold;" text="Đã có tài khoản, đăng nhập ngay!">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children></Pane>
+        <TextField fx:id="tf_username" layoutX="207.0" layoutY="210.0" prefHeight="46.0" prefWidth="239.0" promptText="Nhập tên của bạn ..." style="-fx-font-weight: bold;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+        <Label fx:id="lb_signUp" alignment="CENTER" layoutX="261.0" layoutY="296.0" prefHeight="46.0" prefWidth="131.0" style="-fx-border-radius: 5; -fx-font-weight: bold; -fx-background-color: d8d8d8; -fx-background-radius: 8;" text="Đăng kí ngay" textFill="#7b7b7b">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="TOP" layoutX="191.0" layoutY="127.0" prefHeight="46.0" prefWidth="280.0" style="-fx-wrap-text: true; -fx-label-padding: 5; -fx-font-weight: bold;" text="ĐĂNG KÍ" textAlignment="CENTER" textFill="#666666">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+      <Label fx:id="lb_notify" layoutX="253.0" layoutY="172.0" style="-fx-font-weight: bold;" textFill="#00ff1a">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+    </children>
+</Pane>

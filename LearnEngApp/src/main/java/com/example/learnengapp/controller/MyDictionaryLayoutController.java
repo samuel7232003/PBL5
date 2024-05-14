@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.example.learnengapp.controller.ServerDataController.setSavePage;
+
 public class MyDictionaryLayoutController  implements Initializable {
     @FXML
     public GridPane listVocablib;
@@ -38,8 +40,11 @@ public class MyDictionaryLayoutController  implements Initializable {
     private TextField findWord;
     @FXML
     private ImageView myNotebookView;
+    @FXML
+    private TextField tf_focus;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tf_focus.requestFocus();
 
         listVocablib.setVgap(15);
         listVocablib.setHgap(15);
@@ -54,9 +59,9 @@ public class MyDictionaryLayoutController  implements Initializable {
             pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
 
             pane.setPrefHeight(90);
-            pane.setPrefWidth(160);
-            pane.setMinSize(160, 90);
-            pane.setMaxSize(160, 90);
+            pane.setPrefWidth(210);
+            pane.setMinSize(210, 90);
+            pane.setMaxSize(210, 90);
 
             Label word = new Label(vocab.getWord());
             pane.getChildren().add(word);
@@ -93,6 +98,7 @@ public class MyDictionaryLayoutController  implements Initializable {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadDetailsView(stage);
                     loadView(stage, "wordLayout.fxml");
+                    setSavePage(2);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -130,12 +136,14 @@ public class MyDictionaryLayoutController  implements Initializable {
         findWord.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                setSavePage(2);
                 String keyword = stringProcess(findWord.getText());
 //                System.out.println(keyword);
-                Vocab vocab = ServerDataController.searchVocab(keyword);
+                Vocab vocab = null;
+                vocab = ServerDataController.searchVocabforFindWord(keyword);
 //                System.out.println(vocab.getMean());
 
-                if(Objects.equals(findWord.getText(), "")){
+                if(Objects.equals(keyword, "")){
                     Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                     FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
                     Scene scene = null;
@@ -146,7 +154,6 @@ public class MyDictionaryLayoutController  implements Initializable {
                     }
                     ServerDataController.getData().setStage(stage);
                     ServerDataController.getData().getStage().setScene(scene);
-
                 }
                 if(Objects.equals(vocab.getWord(), keyword)){
                     ServerDataController.getData().setVocab(vocab);
@@ -160,7 +167,8 @@ public class MyDictionaryLayoutController  implements Initializable {
                     }
                     ServerDataController.getData().setStage(stage);
                     ServerDataController.getData().getStage().setScene(scene);
-                }else{
+                }
+                if(Objects.equals(vocab.getIdVocab(), "noId")){
                     listVocablib.getChildren().clear();
                     Label label = new Label("Không tìm thấy từ vựng");
                     listVocablib.getChildren().add(label);

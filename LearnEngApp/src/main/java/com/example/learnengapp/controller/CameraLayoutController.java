@@ -29,6 +29,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.example.learnengapp.controller.ServerDataController.setSavePage;
+
 public class CameraLayoutController implements Initializable {
     @FXML
     public HBox listVocab;
@@ -66,9 +69,9 @@ public class CameraLayoutController implements Initializable {
                 pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
 
                 pane.setPrefHeight(90);
-                pane.setPrefWidth(175);
+                pane.setPrefWidth(210);
                 pane.setMinHeight(90);
-                pane.setMinWidth(175);
+                pane.setMinWidth(210);
 
                 Label word = new Label(vocab.getWord());
                 pane.getChildren().add(word);
@@ -105,6 +108,7 @@ public class CameraLayoutController implements Initializable {
                         ServerDataController.getData().setVocab(vocab);
                         Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                         loadView(stage, "wordLayout.fxml");
+                        setSavePage(1);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

@@ -57,6 +57,17 @@ public class ServerDataController {
         }
         return null;
     }
+
+    public static Vocab searchVocabforFindWord(String keyword){
+        Vocab vcb = new Vocab("noId", "", "", "", "");
+        for(Vocab vocab : data.getFullVocab()){
+            if(vocab.getWord().equals(keyword)){
+                return vocab;
+            }
+        }
+        return vcb;
+    }
+
     public static void setVocabToShow(ArrayList<Integer> idword) throws IOException {
         vocabToShow.clear();
         // chuyển mảng từ kiểu số int sang kiểu string là các id chính thức: vcb001
