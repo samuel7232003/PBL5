@@ -101,6 +101,7 @@ public class DeviceHandler  extends Thread{
                                                 deviceHandler.getBufferedWriter().newLine();
                                                 deviceHandler.getBufferedWriter().write("" + id);
                                                 deviceHandler.getBufferedWriter().flush();
+                                                break;
                                             }
 //                                } else if (deviceHandler.nameDevice == "MODEL") {
 //                                    deviceHandler.getBufferedWriter().write(continuee);
