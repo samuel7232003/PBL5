@@ -54,8 +54,8 @@ public class CameraLayoutController implements Initializable {
         Insets marginInsets = new Insets(10, 0, 0, 0); // top, right, bottom, left
         HBox.setMargin(listVocab, marginInsets);
 
-        WebEngine engine = webView.getEngine();
-        engine.load("http://192.168.151.130:81/stream");
+//        WebEngine engine = webView.getEngine();
+//        engine.load("https://www.youtube.com/watch?v=iJb-MIUU7Y4");
 
 
         if(ServerDataController.getVocabToShow() != null){
