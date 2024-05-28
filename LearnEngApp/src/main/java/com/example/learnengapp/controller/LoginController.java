@@ -1,6 +1,7 @@
 package com.example.learnengapp.controller;
 
 import com.example.learnengapp.DAO.UserDAO;
+import com.example.learnengapp.Socket.DeviceHandler;
 import com.example.learnengapp.index;
 import com.example.learnengapp.model.User;
 import javafx.event.ActionEvent;
@@ -52,15 +53,11 @@ public class LoginController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("signUp.fxml"));
-                Scene scene = null;
                 try {
-                    scene = new Scene(fxmlLoader.load(), 700, 500);
+                    loadView(stage, "signUp.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                ServerDataController.getData().setStage(stage);
-                ServerDataController.getData().getStage().setScene(scene);
             }
         });
     }
@@ -70,6 +67,7 @@ public class LoginController implements Initializable {
     }
 
     public void loadHome(Stage stage) throws IOException {
+//        DeviceHandler.continueDetect();
         FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         stage.setTitle("Camera");
@@ -90,5 +88,12 @@ public class LoginController implements Initializable {
             ServerDataController.getData().setUser(user);
             loadHome(ServerDataController.getData().getStage());
         }
+    }
+
+    public void loadView(Stage stage, String viewURL) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource(viewURL));
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
     }
 }

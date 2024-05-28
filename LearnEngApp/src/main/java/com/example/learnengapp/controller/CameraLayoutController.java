@@ -46,6 +46,8 @@ public class CameraLayoutController implements Initializable {
 
     @FXML
     private WebView webView;
+    @FXML
+    private ImageView btnChooseTest;
 
     private ArrayList<Vocab> vocabArrayList;
     @Override
@@ -63,7 +65,6 @@ public class CameraLayoutController implements Initializable {
 
         if(ServerDataController.getVocabToShow() != null){
             for (Vocab vocab : ServerDataController.getVocabToShow()){
-//                for (Vocab vocab : ServerDataController.getData().getFullVocab()){
                 Pane pane = new Pane();
                 pane.setId(vocab.getIdVocab());
                 pane.setStyle("-fx-background-color: #d9d9d9; -fx-background-radius: 8;");
@@ -151,6 +152,19 @@ public class CameraLayoutController implements Initializable {
                     DeviceHandler.stopDetect();
 //                    loadDictionaryView(stage);
                     loadView(stage, "myDictionaryLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        btnChooseTest.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    DeviceHandler.stopDetect();
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+                    loadView(stage, "choseTestLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

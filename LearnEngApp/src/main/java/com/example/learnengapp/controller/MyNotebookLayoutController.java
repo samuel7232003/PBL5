@@ -32,6 +32,8 @@ import static com.example.learnengapp.controller.ServerDataController.setSavePag
 
 public class MyNotebookLayoutController implements Initializable {
     @FXML
+    public ImageView btnChooseTest;
+    @FXML
     private GridPane listMyVocablib;
     @FXML
     private ImageView cameraImageView;
@@ -132,6 +134,20 @@ public class MyNotebookLayoutController implements Initializable {
                     DeviceHandler.continueDetect();
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
                     loadView(stage, "cameraLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        btnChooseTest.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.stopDetect();
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadMyNotebookView(stage);
+                    loadView(stage, "choseTestLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

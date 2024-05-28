@@ -7,7 +7,7 @@
 
 <Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.SignUpController">
     <children>
-        <TextField fx:id="tf_focus" layoutX="722.0" layoutY="30.0" />
+        <TextField fx:id="tf_focus" layoutX="735.0" layoutY="30.0" />
         <ImageView fitHeight="579.0" fitWidth="772.0" layoutX="-50.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@background2.jpg" />

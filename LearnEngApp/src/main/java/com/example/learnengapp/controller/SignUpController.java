@@ -45,10 +45,8 @@ public class SignUpController implements Initializable {
                 String userName = tf_username.getText().trim();
 
                 if(checkUserName(userName, fullUser)){
-                    String randomId = null;
+                    String randomId = "us".concat(String.format("%03d", generateRandomNumber()));
                     for (User userr : fullUser) {
-                        randomId = "us".concat(String.format("%03d", generateRandomNumber()));
-
                         while (randomId.equals(userr.getIdUser())) {
                             randomId = "us".concat(String.format("%03d", generateRandomNumber()));
                         }
@@ -67,15 +65,11 @@ public class SignUpController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("login.fxml"));
-                Scene scene = null;
                 try {
-                    scene = new Scene(fxmlLoader.load(), 700, 500);
+                    loadView(stage, "login.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                ServerDataController.getData().setStage(stage);
-                ServerDataController.getData().getStage().setScene(scene);
             }
         });
     }
@@ -91,5 +85,12 @@ public class SignUpController implements Initializable {
             }
         }
         return true;
+    }
+
+    public void loadView(Stage stage, String viewURL) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource(viewURL));
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+        ServerDataController.getData().setStage(stage);
+        ServerDataController.getData().getStage().setScene(scene);
     }
 }

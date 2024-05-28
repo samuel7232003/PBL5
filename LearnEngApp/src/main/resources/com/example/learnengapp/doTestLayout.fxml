@@ -8,24 +8,25 @@
 
 <Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.learnengapp.controller.DoTestLayoutController">
    <children>
+      <TextField fx:id="tf_focus" layoutX="737.0" layoutY="17.0" promptText="aaa" />
       <Pane layoutX="23.0" layoutY="65.0" prefHeight="209.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-radius: 50;">
          <children>
             <Circle fill="#1f93ff00" layoutX="25.0" layoutY="123.0" radius="23.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: D9D9D9;" />
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_camera" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/Camera_light.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_dictionary" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/notebook_light.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_chooseTest" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/Test.png" />
                </image></ImageView>
-            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_myNotebook" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icon/User_cicrle_light.png" />
                </image>
@@ -38,35 +39,39 @@
       </Label>
       <Pane layoutX="96.0" layoutY="64.0" prefHeight="411.0" prefWidth="568.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: ffffff;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="96.0" style="-fx-font-family: inter;" text="Câu số 1: ">
+            <Label fx:id="lb_no_question" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="96.0" style="-fx-font-family: inter;" text="Câu số 1: ">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Pane layoutX="89.0" layoutY="66.0" prefHeight="182.0" prefWidth="391.0">
+            <Pane layoutX="89.0" layoutY="46.0" prefHeight="182.0" prefWidth="391.0">
                <children>
-                  <ImageView fitHeight="182.0" fitWidth="184.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image_question" fitHeight="182.0" fitWidth="184.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/vcb010.jpg" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <TextField layoutX="242.0" layoutY="269.0" prefHeight="46.0" prefWidth="245.0">
+            <TextField fx:id="tf_answer" layoutX="242.0" layoutY="288.0" prefHeight="46.0" prefWidth="245.0">
                <font>
                   <Font size="23.0" />
                </font>
             </TextField>
-            <Label layoutX="81.0" layoutY="280.0" style="-fx-font-family: inter;" text="Nhập đáp án:">
+            <Label layoutX="103.0" layoutY="300.0" style="-fx-font-family: inter;" text="Nhập từ vựng:">
                <font>
-                  <Font size="23.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="426.0" layoutY="351.0" prefHeight="46.0" prefWidth="122.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-font-family: inter;" text="Tiếp theo">
+            <Label fx:id="lb_next" alignment="CENTER" layoutX="426.0" layoutY="351.0" prefHeight="46.0" prefWidth="122.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-font-family: inter;" text="Tiếp theo">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="lb_mean" alignment="CENTER" contentDisplay="CENTER" layoutX="153.0" layoutY="246.0" prefHeight="25.0" prefWidth="263.0" style="-fx-font-weight: bold;" text="Quả táo" textAlignment="JUSTIFY">
                <font>
                   <Font size="18.0" />
                </font></Label>
          </children></Pane>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="624.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btn_back" fitHeight="40.0" fitWidth="40.0" layoutX="624.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icon/Back.png" />
          </image>

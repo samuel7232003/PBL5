@@ -28,7 +28,9 @@ import static com.example.learnengapp.controller.ServerDataController.getSavePag
 
 
 public class WordLayoutController implements Initializable {
-//    private Data data;
+    @FXML
+    public ImageView btnChooseTest;
+    //    private Data data;
     @FXML
     private Label wordVocab;
     @FXML
@@ -91,10 +93,12 @@ public class WordLayoutController implements Initializable {
                 if(homeBack == 1){
                     DeviceHandler.continueDetect();
                     fxmlLoader = new FXMLLoader(index.class.getResource("cameraLayout.fxml"));
-                } else if (homeBack == 2) {
+                }else if (homeBack == 2) {
                     fxmlLoader = new FXMLLoader(index.class.getResource("myDictionaryLayout.fxml"));
-                }else
+                }else if (homeBack == 3){
                     fxmlLoader = new FXMLLoader(index.class.getResource("myNotebookLayout.fxml"));
+                }else
+                    fxmlLoader = new FXMLLoader(index.class.getResource("doneTestLayout.fxml"));
 
                 Scene scene;
                 try {
@@ -155,6 +159,20 @@ public class WordLayoutController implements Initializable {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
                     loadView(stage, "myNotebookLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        btnChooseTest.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.stopDetect();
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadMyNotebookView(stage);
+                    loadView(stage, "chooseTestLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

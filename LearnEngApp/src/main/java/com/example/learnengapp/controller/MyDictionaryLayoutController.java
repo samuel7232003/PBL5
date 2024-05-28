@@ -35,6 +35,8 @@ public class MyDictionaryLayoutController  implements Initializable {
     @FXML
     public GridPane listVocablib;
     @FXML
+    public ImageView btnChooseTest;
+    @FXML
     private ImageView cameraImageView;
     @FXML
     private TextField findWord;
@@ -113,6 +115,20 @@ public class MyDictionaryLayoutController  implements Initializable {
                     Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
 //                    loadCameraView(stage);
                     loadView(stage, "cameraLayout.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        btnChooseTest.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                DeviceHandler.stopDetect();
+                try {
+                    Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+//                    loadMyNotebookView(stage);
+                    loadView(stage, "choseTestLayout.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

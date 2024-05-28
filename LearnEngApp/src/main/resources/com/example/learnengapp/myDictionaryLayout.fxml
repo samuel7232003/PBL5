@@ -27,7 +27,7 @@
                        <Image url="@icon/notebook_light.png" />
                    </image>
                </ImageView>
-               <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="btnChooseTest" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@icon/Test.png" />
                    </image></ImageView>

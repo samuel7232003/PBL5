@@ -11,21 +11,21 @@
         <Pane layoutX="23.0" layoutY="65.0" prefHeight="209.0" prefWidth="50.0" style="-fx-border-color: black; -fx-border-radius: 50;">
             <children>
                 <Circle fill="#1f93ff00" layoutX="25.0" layoutY="122.0" radius="23.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: D9D9D9;" />
-                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="btn_camera" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icon/Camera_light.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="btn_dictionary" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icon/notebook_light.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="btn_chooseTest" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icon/Test.png" />
                     </image></ImageView>
-                <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="btn_myNotebook" fitHeight="34.0" fitWidth="34.0" layoutX="8.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icon/User_cicrle_light.png" />
                     </image>
@@ -36,29 +36,25 @@
                 <Font size="21.0" />
             </font>
         </Label>
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="624.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="btn_back" fitHeight="40.0" fitWidth="40.0" layoutX="624.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@icon/Back.png" />
             </image>
         </ImageView>
         <Pane layoutX="96.0" layoutY="64.0" prefHeight="411.0" prefWidth="568.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: ffffff;">
          <children>
-            <Label layoutX="216.0" layoutY="52.0" prefHeight="40.0" prefWidth="137.0" style="-fx-font-family: inter;" text="Hoàn thành">
+            <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="338.0" prefWidth="546.0">
+               <content>
+                  <VBox fx:id="list_answer" prefHeight="75.0" prefWidth="542.0" />
+               </content></ScrollPane>
+            <Label fx:id="lb_done" alignment="CENTER" layoutX="410.0" layoutY="363.0" prefHeight="31.0" prefWidth="125.0" style="-fx-background-color: d9d9d9; -fx-background-radius: 8; -fx-font-weight: bold;" text="Xong" textFill="#7b7b7b">
                <font>
-                  <Font size="24.0" />
-               </font></Label>
-            <Pane layoutX="137.0" layoutY="117.0" prefHeight="120.0" prefWidth="295.0" style="-fx-border-color: black; -fx-border-radius: 8;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="120.0" prefWidth="295.0" text="10/10">
-                     <font>
-                        <Font size="60.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label alignment="CENTER" layoutX="185.0" layoutY="286.0" prefHeight="53.0" prefWidth="200.0" style="-fx-background-color: d9d9d9; -fx-background-radius: 8; -fx-font-weight: bold;" text="Tiếp tục" textFill="#7b7b7b">
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lb_sum" layoutX="30.0" layoutY="364.0" prefHeight="30.0" prefWidth="354.0" style="-fx-font-weight: bold;" text="Tổng số câu trả lời đúng là 10/10">
                <font>
-                  <Font size="24.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
          </children></Pane>

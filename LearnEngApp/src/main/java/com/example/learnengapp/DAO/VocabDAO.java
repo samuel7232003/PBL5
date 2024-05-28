@@ -1,5 +1,6 @@
 package com.example.learnengapp.DAO;
 
+import com.example.learnengapp.controller.ServerDataController;
 import com.example.learnengapp.model.User;
 import com.example.learnengapp.model.Vocab;
 
@@ -53,6 +54,16 @@ public class VocabDAO extends connectMySQL{
             throw new RuntimeException(e);
         }
         return vocab;
+    }
+
+    public static Vocab getVcbById(String idVocab){
+        Vocab result = new Vocab("", "", "", "", "");
+        for(Vocab vcb : ServerDataController.getData().getFullVocab()){
+            if (Objects.equals(vcb.getIdVocab(), idVocab)){
+                result = vcb;
+            }
+        }
+        return result;
     }
 
     public static Vocab getVocabByWord(String word){

@@ -2,6 +2,7 @@ package com.example.learnengapp.controller;
 
 import com.example.learnengapp.Socket.SocketController;
 import com.example.learnengapp.model.ServerData;
+import com.example.learnengapp.model.Test;
 import com.example.learnengapp.model.Vocab;
 import javafx.application.Platform;
 
@@ -14,6 +15,17 @@ public class ServerDataController {
     private static CameraLayoutController cameraLayoutController;
     private static ArrayList<Vocab> vocabToShow;
     private static int savePage; //lưu chuyển trang
+    private static int saveQuestion; //lưu số lượng câu hỏi
+    public static ArrayList<Test> listQuestion = new ArrayList<>();
+
+
+    public static int getSaveQuestion() {
+        return saveQuestion;
+    }
+
+    public static void setSaveQuestion(int saveQuestion) {
+        ServerDataController.saveQuestion = saveQuestion;
+    }
 
     public static int getSavePage() {
         return savePage;
